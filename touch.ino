@@ -23,3 +23,8 @@ void print_Touch() {
     tft.Fill_Circle(cx, cy, 5);
   }
 }
+
+void touch_IsTouched() {
+  touch_toggle = true;
+  touch_last_millis = millis();
+}

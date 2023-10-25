@@ -59,7 +59,7 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 9
+#define FILE_NUMBER 3
 #define FILE_NAME_SIZE_MAX 20
 
 uint32_t bmp_offset = 0;
@@ -74,8 +74,9 @@ bool touch_toggle = false;
 uint32_t touch_last_millis = 0;
 
 uint16_t currentScreen = 0x0000;
-uint8_t btn_pressed=0;
+uint8_t btn_pressed = 0;
 
+bool btn_Home_pressed = false;
 
 void setup() {
   Serial.begin(115200);
@@ -87,11 +88,30 @@ void setup() {
   ts.begin();
   ts.setRotation(3);
 
+
+  if (PIXEL_NUMBER == 60) {
+    strcpy(file_name[0], "BHome.bmp");
+    strcpy(file_name[1], "IconRes.bmp");
+  } else {
+    strcpy(file_name[0], "BHome.bmp");
+    strcpy(file_name[1], "IconRes.bmp");
+  }
+  //Init SD_Card
+  pinMode(48, OUTPUT);
+
+  if (!SD.begin(48)) {
+    tft.Set_Text_Back_colour(BLUE);
+    tft.Set_Text_colour(WHITE);
+    tft.Set_Text_Size(1);
+    tft.Print_String("SD Card Init fail!", 0, 0);
+  }
+
+  tft.Fill_Screen(RED);
+  tft.Fill_Screen(GREEN);
   tft.Fill_Screen(BLUE);
 
-  //disp_LoadingScreen();
-  //delay(2000);
-
+  disp_LoadingScreen();
+  delay(2000);
 }
 
 void loop() {
@@ -104,9 +124,15 @@ void loop() {
     case 0x1000:
       disp_IC_select();
       break;
-    deault:
+    case 0x2000:
+      disp_Resistor_test();
+      break;
+    case 0x3000:
+      disp_Transistor_test();
+      break;
+    default:
       disp_Home();
-      break;      
+      break;
   }
 
   if (touch_toggle && millis() - touch_last_millis >= 100) {
