@@ -58,6 +58,7 @@ void disp_Home() {
       show_string("Integrated Circuit", CENTER, 205, 4, WHITE, RED, 0);
 
       btn_IC_pressed = false;
+      btn_pressed = 1;
     } else if (btn_Resistor_pressed && !touch_toggle) {
       tft.Set_Draw_color(RED);
       tft.Fill_Round_Rectangle(150, 290, 690, 350, 15);
@@ -66,20 +67,39 @@ void disp_Home() {
       show_string("Resistor", CENTER, 300, 6, WHITE, RED, 0);
 
       btn_Resistor_pressed = false;
+      btn_pressed = 2;
     } else if (btn_Transistor_pressed && !touch_toggle) {
       tft.Set_Draw_color(RED);
       tft.Fill_Round_Rectangle(150, 390, 690, 450, 15);
       tft.Set_Draw_color(WHITE);
       tft.Draw_Round_Rectangle(150, 390, 690, 450, 15);
       show_string("Transistor", CENTER, 400, 6, WHITE, RED, 0);
-      
-      btn_Transistor_pressed=false;
+
+      btn_Transistor_pressed = false;
+      btn_pressed = 3;
+    }
+  }
+
+
+  //CONDITION based on the btn_pressed
+  if (!btn_IC_pressed && !btn_Resistor_pressed && !btn_Transistor_pressed && !touch_toggle && btn_pressed > 0) {
+    switch (btn_pressed) {
+      case 1:
+        currentScreen = 0x1000;
+        break;
+      case 2:
+        currentScreen = 0x2000;
+        break;
+      case 3:
+        currentScreen = 0x3000;
+        break;        
     }
   }
 }
 
 
 void disp_Home_init() {
+  tft.Fill_Screen(BLACK);
   show_string("ELECTRONIC COMPONENT TESTER", CENTER, 30, 4, WHITE, WHITE, 0);
   show_string("by MICROn Technology", CENTER, 80, 2, WHITE, WHITE, 0);
   tft.Draw_Line(50, 70, 750, 70);
@@ -91,6 +111,9 @@ void disp_Home_init() {
   tft.Fill_Round_Rectangle(150, 190, 690, 250, 15);
   tft.Set_Draw_color(WHITE);
   tft.Draw_Round_Rectangle(150, 190, 690, 250, 15);
+  //tft.Set_Draw_color(BLUE);
+  //tft.Fill_Circle(150, 190, 5);
+  //tft.Fill_Circle(690, 250, 5);
   show_string("Integrated Circuit", CENTER, 205, 4, WHITE, RED, 0);
 
 

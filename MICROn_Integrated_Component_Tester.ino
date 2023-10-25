@@ -73,6 +73,10 @@ char file_name[FILE_NUMBER][FILE_NAME_SIZE_MAX];
 bool touch_toggle = false;
 uint32_t touch_last_millis = 0;
 
+uint16_t currentScreen = 0x0000;
+uint8_t btn_pressed=0;
+
+
 void setup() {
   Serial.begin(115200);
   Serial.println("System Starting...\nMICROn Component Tester V1.0");
@@ -85,14 +89,25 @@ void setup() {
 
   tft.Fill_Screen(BLUE);
 
-  disp_LoadingScreen();
-  delay(2000);
-  tft.Fill_Screen(BLACK);
+  //disp_LoadingScreen();
+  //delay(2000);
+
 }
 
 void loop() {
-  disp_Home();
-  //print_Touch();
+
+
+  switch (currentScreen) {
+    case 0x0000:
+      disp_Home();
+      break;
+    case 0x1000:
+      disp_IC_select();
+      break;
+    deault:
+      disp_Home();
+      break;      
+  }
 
   if (touch_toggle && millis() - touch_last_millis >= 100) {
     touch_toggle = false;
