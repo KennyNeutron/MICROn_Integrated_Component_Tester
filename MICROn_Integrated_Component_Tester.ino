@@ -72,6 +72,8 @@ char file_name[FILE_NUMBER][FILE_NAME_SIZE_MAX];
 
 bool touch_toggle = false;
 uint32_t touch_last_millis = 0;
+uint32_t blink_last_millis = 0;
+bool blink = false;
 
 uint16_t currentScreen = 0x0000;
 uint8_t btn_pressed = 0;
@@ -85,6 +87,10 @@ bool btn_ICDetails_pressed = false;
 bool btn_TestReport_pressed = false;
 
 bool bad_ic = false;
+bool errorLG1 = false;
+bool errorLG2 = false;
+bool errorLG3 = false;
+bool errorLG4 = false;
 
 
 void setup() {

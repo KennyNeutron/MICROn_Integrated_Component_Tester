@@ -69,6 +69,58 @@ void disp_74LS08_TestResult() {
     }
     disp_74LS08_TestResult_exit();
   }
+
+  //Hightlight the ERRORS by BLINKING
+  if (errorLG1) {
+    if (!blink) {
+      tft.Set_Draw_color(RED);
+      tft.Draw_Rectangle(65, 173, 145, 236);
+      tft.Draw_Rectangle(64, 172, 146, 237);
+    } else {
+      tft.Set_Draw_color(GREEN);
+      tft.Draw_Rectangle(65, 173, 145, 236);
+      tft.Draw_Rectangle(64, 172, 146, 237);
+    }
+  }
+  if (errorLG2) {
+    if (!blink) {
+      tft.Set_Draw_color(RED);
+      tft.Draw_Rectangle(65, 243, 145, 306);  //Error on LG2
+      tft.Draw_Rectangle(64, 242, 146, 307);  //Error on LG2
+    } else {
+      tft.Set_Draw_color(GREEN);
+      tft.Draw_Rectangle(65, 243, 145, 306);  //Error on LG2
+      tft.Draw_Rectangle(64, 242, 146, 307);  //Error on LG2
+    }
+  }
+  if (errorLG3) {
+    if (!blink) {
+      tft.Set_Draw_color(RED);
+      tft.Draw_Rectangle(155, 268, 225, 332);  //Error on LG3
+      tft.Draw_Rectangle(154, 267, 226, 333);  //Error on LG3
+    } else {
+      tft.Set_Draw_color(GREEN);
+      tft.Draw_Rectangle(155, 268, 225, 332);  //Error on LG3
+      tft.Draw_Rectangle(154, 267, 226, 333);  //Error on LG3
+    }
+  }
+  if (errorLG4) {
+    if (!blink) {
+      tft.Set_Draw_color(RED);
+      tft.Draw_Rectangle(155, 195, 225, 262);  //Error on LG4
+      tft.Draw_Rectangle(154, 194, 226, 263);  //Error on LG4
+    } else {
+      tft.Set_Draw_color(GREEN);
+      tft.Draw_Rectangle(155, 195, 225, 262);  //Error on LG4
+      tft.Draw_Rectangle(154, 194, 226, 263);  //Error on LG4
+    }
+  }
+
+
+  if (millis() - blink_last_millis > 200) {
+    blink = !blink;
+    blink_last_millis = millis();
+  }
 }
 
 void disp_74LS08_TestResult_exit() {
@@ -77,6 +129,11 @@ void disp_74LS08_TestResult_exit() {
 
   disp_74LS08_TestResult_init = false;
   btn_pressed = 0;
+
+  errorLG1 = false;
+  errorLG2 = false;
+  errorLG3 = false;
+  errorLG4 = false;
 }
 
 bool get_TestResult_74LS08_LG1() {
@@ -113,11 +170,6 @@ bool get_TestResult_74LS08_LG4() {
 
 void disp_74LS08_TestResult_INIT() {
   uint8_t NumOf_ErrorGate = 0;
-
-  bool errorLG1 = false;
-  bool errorLG2 = false;
-  bool errorLG3 = false;
-  bool errorLG4 = false;
 
   String str_NumOf_ErrorGate = "# Of BAD Logic Gate(s): ";
   String str_ErrorGate = "Bad Logic Gate(s): ";
@@ -159,10 +211,13 @@ void disp_74LS08_TestResult_INIT() {
       str_ErrorGate = str_ErrorGate + " LG4";
     }
     NumOf_ErrorGate++;
+    errorLG4 = true;
   }
 
   if (NumOf_ErrorGate > 0) {
     bad_ic = true;
+  } else {
+    bad_ic = false;
   }
 
   Serial.println("\n\n\n******74LS08 Test Results******");
@@ -219,9 +274,24 @@ void disp_74LS08_TestResult_INIT() {
   draw_bmp_picture(bmp_file, 50, 150);
   bmp_file.close();
 
+  /*
+  tft.Set_Draw_color(RED);
+  tft.Draw_Rectangle(65, 173, 145, 236);  //Error on LG1
+  tft.Draw_Rectangle(64, 172, 146, 237);  //Error on LG1
+
+  tft.Draw_Rectangle(65, 243, 145, 306);  //Error on LG2
+  tft.Draw_Rectangle(64, 242, 146, 307);  //Error on LG2
+
+  tft.Draw_Rectangle(155, 195, 225, 262);  //Error on LG4
+  tft.Draw_Rectangle(154, 194, 226, 263);  //Error on LG4
+
+  tft.Draw_Rectangle(155, 268, 225, 332);  //Error on LG3
+  tft.Draw_Rectangle(154, 267, 226, 333);  //Error on LG3
+  */
 
 
   ICtest_74LS08_done = true;
 
   disp_74LS08_TestResult_init = true;
+  blink_last_millis = millis();
 }
