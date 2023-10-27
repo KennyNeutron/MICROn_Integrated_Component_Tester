@@ -30,7 +30,7 @@ void disp_74LS08_TestResult() {
     } else if (bad_ic && cx > 440 && cx < 660 && cy > 400 && cy < 440) {
       print_button_TestReport_pressed();
       btn_TestReport_pressed = true;
-      touch_IsTouched();      
+      touch_IsTouched();
     }
   } else {
     if (btn_Home_pressed && !touch_toggle) {
@@ -42,7 +42,7 @@ void disp_74LS08_TestResult() {
     } else if (btn_TruthTable_pressed && !touch_toggle) {
       print_button_TruthTable();
       btn_TruthTable_pressed = false;
-      //btn_pressed = 1;
+      btn_pressed = 1;
     } else if (btn_ICDetails_pressed && !touch_toggle) {
       print_button_ICDetails();
       btn_ICDetails_pressed = false;
@@ -59,6 +59,9 @@ void disp_74LS08_TestResult() {
     switch (btn_pressed) {
       case 255:
         currentScreen = 0x0000;
+        break;
+      case 1:
+        currentScreen = 0x1111;
         break;
       default:
         currentScreen = 0x0000;
@@ -175,10 +178,7 @@ void disp_74LS08_TestResult_INIT() {
   draw_bmp_picture(bmp_file, 10, 5);
   bmp_file.close();
 
-  show_string("Integrated Circuit TESTER", CENTER, 30, 4, WHITE, WHITE, 0);
-  show_string("S74LS08 TEST RESULT", CENTER, 80, 3, WHITE, WHITE, 0);
-  tft.Set_Draw_color(RED);
-  tft.Draw_Line(50, 70, 750, 70);
+  display_TitleBar("Integrated Circuit TESTER", "74LS08 TEST RESULT");
 
   //REPORT MESSAGE
   if (bad_ic) {
@@ -188,6 +188,7 @@ void disp_74LS08_TestResult_INIT() {
     tft.Draw_Round_Rectangle(390, 150, 660, 210, 12);
     show_string("BAD IC", 420, 160, 6, WHITE, RED, 0);
   } else {
+    bad_ic = false;
     tft.Set_Draw_color(GREEN);
     tft.Fill_Round_Rectangle(390, 150, 660, 210, 12);
     tft.Set_Draw_color(WHITE);
@@ -197,8 +198,8 @@ void disp_74LS08_TestResult_INIT() {
 
 
 
-  show_string(str_NumOf_ErrorGate + String(NumOf_ErrorGate), 350, 230, 2, WHITE, BLACK, 0);
-  show_string(str_ErrorGate, 350, 270, 2, WHITE, BLACK, 0);
+  show_string(str_NumOf_ErrorGate + String(NumOf_ErrorGate), 320, 230, 2, WHITE, BLACK, 0);
+  show_string(str_ErrorGate, 320, 270, 2, WHITE, BLACK, 0);
 
   //Truth Table Button
   print_button_TruthTable();

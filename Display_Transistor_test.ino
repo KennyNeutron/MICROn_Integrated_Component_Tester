@@ -57,10 +57,7 @@ void disp_Transistor_test_init() {
   draw_bmp_picture(bmp_file, 10, 10);
   bmp_file.close();
 
-  show_string("Transistor TESTER", CENTER, 30, 4, WHITE, WHITE, 0);
-  tft.Set_Draw_color(RED);
-  tft.Draw_Line(50, 70, 750, 70);
+  display_TitleBar("Transistor TESTER", " ");
 
   disp_transistor_test_init = true;
-  
 }

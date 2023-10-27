@@ -176,7 +176,7 @@ void disp_IC_select() {
       show_string("74LS08", 50, 150, 4, BLACK, GREEN, 0);
 
       btn_74LS08_pressed = false;
-      btn_pressed = 1;      
+      btn_pressed = 1;
     } else if (btn_74LS04_pressed && !touch_toggle) {
       //74LS04 Button
       tft.Set_Draw_color(GREEN);
@@ -312,11 +312,9 @@ void disp_IC_select_init() {
   draw_bmp_picture(bmp_file, 10, 10);
   bmp_file.close();
 
-  show_string("Integrated Circuit TESTER", CENTER, 30, 4, WHITE, WHITE, 0);
-  show_string("Select IC", CENTER, 80, 3, WHITE, WHITE, 0);
-  tft.Set_Draw_color(RED);
-  tft.Draw_Line(50, 70, 750, 70);
+  display_TitleBar("Integrated Circuit TESTER","Select IC");
 
+  
   //=========== ROW 1 ==================================
   tft.Set_Draw_color(GREEN);
   tft.Fill_Round_Rectangle(45, 140, 200, 190, 9);

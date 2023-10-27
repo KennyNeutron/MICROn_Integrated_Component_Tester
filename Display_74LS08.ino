@@ -19,6 +19,7 @@ void disp_74LS08() {
     long cy = map(p.y, 216, 3820, 0, 480);
 
     if (cx > 10 && cx < 70 && cy > 5 && cy < 65) {
+      //Back Button
       tft.Set_Draw_color(WHITE);
       tft.Draw_Circle(40, 35, 35);
 
@@ -100,10 +101,7 @@ void disp_74LS08_INIT() {
   draw_bmp_picture(bmp_file, 10, 5);
   bmp_file.close();
 
-  show_string("Integrated Circuit TESTER", CENTER, 30, 4, WHITE, WHITE, 0);
-  show_string("S74LS08", CENTER, 80, 3, WHITE, WHITE, 0);
-  tft.Set_Draw_color(RED);
-  tft.Draw_Line(50, 70, 750, 70);
+  display_TitleBar("Integrated Circuit TESTER", "74LS08- AND Gate");
 
   //TEST Button
   print_button_test();

@@ -143,6 +143,9 @@ void loop() {
     case 0x1110:
       disp_74LS08_TestResult();
       break;
+    case 0x1111:
+      disp_TruthTable();
+      break;
     case 0x2000:
       disp_Resistor_test();
       break;

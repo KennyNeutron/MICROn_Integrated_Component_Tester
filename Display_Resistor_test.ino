@@ -100,10 +100,8 @@ void disp_Resistor_test_init() {
   draw_bmp_picture(bmp_file, 350, 90);
   bmp_file.close();
 
+  display_TitleBar("Resistor TESTER", " ");
 
-  show_string("Resistor TESTER", CENTER, 30, 4, WHITE, WHITE, 0);
-  tft.Set_Draw_color(RED);
-  tft.Draw_Line(50, 70, 750, 70);
 
 
   //TEST Button
