@@ -61,7 +61,6 @@ void disp_Transistor_test_init() {
   tft.Set_Draw_color(RED);
   tft.Draw_Line(50, 70, 750, 70);
 
-
-
   disp_transistor_test_init = true;
+  
 }

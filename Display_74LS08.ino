@@ -46,12 +46,12 @@ void disp_74LS08() {
     }
   }
 
-  if (ICtest_74LS08_started && (millis() - ICtest_last_millis) > 2000 && !ICtest_74LS08_done) {
+  if (ICtest_74LS08_started && (millis() - ICtest_last_millis) > 1000 && !ICtest_74LS08_done) {
     show_string("Getting Result", CENTER, 210, 6, WHITE, BLACK, 0);
     ICtest_74LS08_done = true;
   }
 
-  if (ICtest_74LS08_started && ICtest_74LS08_done && (millis() - ICtest_last_millis) > 4000) {
+  if (ICtest_74LS08_started && ICtest_74LS08_done && (millis() - ICtest_last_millis) > 2000) {
     currentScreen = 0x1110;
     disp_74LS08_exit();
   }

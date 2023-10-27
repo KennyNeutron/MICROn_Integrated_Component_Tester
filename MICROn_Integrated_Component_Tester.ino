@@ -37,7 +37,6 @@ XPT2046_Touchscreen ts(TCS_PIN);
 //if the IC model is known or the modules is unreadable,you can use this constructed function
 LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 
-
 /*  r     g    b */
 #define BLACK 0x0000       /*   0,   0,   0 */
 #define BLUE 0x001F        /*   0,   0, 255 */
@@ -58,7 +57,6 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define ORANGE 0xFD20      /* 255, 165,   0 */
 #define GREENYELLOW 0xAFE5 /* 173, 255,  47 */
 #define PINK 0xF81F        /* 255,   0, 255 */
-
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
 #define FILE_NUMBER 5
@@ -81,6 +79,12 @@ uint8_t btn_pressed = 0;
 bool btn_Home_pressed = false;
 bool btn_Back_pressed = false;
 bool btn_testIC_pressed = false;
+
+bool btn_TruthTable_pressed = false;
+bool btn_ICDetails_pressed = false;
+bool btn_TestReport_pressed = false;
+
+bool bad_ic = false;
 
 
 void setup() {
