@@ -24,6 +24,8 @@
 #include <LCDWIKI_KBV.h>  //Hardware-specific library
 #include <XPT2046_Touchscreen.h>
 
+#include "IntegratedCircuitPinout.h"
+
 #define TCS_PIN 53
 
 XPT2046_Touchscreen ts(TCS_PIN);
@@ -59,7 +61,7 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 3
+#define FILE_NUMBER 5
 #define FILE_NAME_SIZE_MAX 20
 
 uint32_t bmp_offset = 0;
@@ -73,10 +75,13 @@ char file_name[FILE_NUMBER][FILE_NAME_SIZE_MAX];
 bool touch_toggle = false;
 uint32_t touch_last_millis = 0;
 
-uint16_t currentScreen = 0x2000;
+uint16_t currentScreen = 0x0000;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
+bool btn_Back_pressed = false;
+bool btn_testIC_pressed = false;
+
 
 void setup() {
   Serial.begin(115200);
@@ -92,9 +97,13 @@ void setup() {
   if (PIXEL_NUMBER == 60) {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
+    strcpy(file_name[2], "BBack.bmp");
+    strcpy(file_name[3], "gateAND.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
+    strcpy(file_name[2], "BBack.bmp");
+    strcpy(file_name[3], "gateAND.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
@@ -124,12 +133,19 @@ void loop() {
     case 0x1000:
       disp_IC_select();
       break;
+    case 0x1100:
+      disp_74LS08();
+      break;
+    case 0x1110:
+      disp_74LS08_TestResult();
+      break;
     case 0x2000:
       disp_Resistor_test();
       break;
     case 0x3000:
       disp_Transistor_test();
       break;
+
     default:
       disp_Home();
       break;
@@ -138,6 +154,9 @@ void loop() {
   if (touch_toggle && millis() - touch_last_millis >= 100) {
     touch_toggle = false;
   }
+
+  //Serial.print("CurrentScreen: ");
+  //Serial.println(currentScreen, HEX);
 }
 
 void show_string(String str, int16_t x, int16_t y, uint8_t csize, uint16_t fc, uint16_t bc, boolean mode) {

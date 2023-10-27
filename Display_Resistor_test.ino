@@ -24,11 +24,7 @@ void disp_Resistor_test() {
       btn_Home_pressed = true;
       touch_IsTouched();
     } else if (cx > 320 && cx < 475 && cy > 380 && cy < 430) {
-      tft.Set_Draw_color(BLUE);
-      tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
-      tft.Set_Draw_color(WHITE);
-      tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
-      show_string("TEST", CENTER, 390, 4, WHITE, BLUE, 0);
+      print_button_test_pressed();
       btn_TestResistor_pressed = true;
     }
   } else {
@@ -40,11 +36,7 @@ void disp_Resistor_test() {
       btn_pressed = 255;
     } else if (btn_TestResistor_pressed && !touch_toggle) {
       //Test (Resistor) Button
-      tft.Set_Draw_color(GREEN);
-      tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
-      tft.Set_Draw_color(WHITE);
-      tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
-      show_string("TEST", CENTER, 390, 4, BLACK, GREEN, 0);
+      print_button_test();
 
       btn_TestResistor_pressed = false;
       test_resistor();
@@ -115,15 +107,7 @@ void disp_Resistor_test_init() {
 
 
   //TEST Button
-  tft.Set_Draw_color(GREEN);
-  tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
-  tft.Set_Draw_color(WHITE);
-  tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
-  show_string("TEST", CENTER, 390, 4, BLACK, GREEN, 0);
-
-
-
-
+  print_button_test();
 
   disp_resistor_test_init = true;
 }
