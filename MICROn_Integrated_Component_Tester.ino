@@ -73,7 +73,7 @@ char file_name[FILE_NUMBER][FILE_NAME_SIZE_MAX];
 bool touch_toggle = false;
 uint32_t touch_last_millis = 0;
 
-uint16_t currentScreen = 0x0000;
+uint16_t currentScreen = 0x2000;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -106,12 +106,12 @@ void setup() {
     tft.Print_String("SD Card Init fail!", 0, 0);
   }
 
-  tft.Fill_Screen(RED);
-  tft.Fill_Screen(GREEN);
-  tft.Fill_Screen(BLUE);
+  //tft.Fill_Screen(RED);
+  //tft.Fill_Screen(GREEN);
+  //tft.Fill_Screen(BLUE);
 
-  disp_LoadingScreen();
-  delay(2000);
+  //disp_LoadingScreen();
+  //delay(2000);
 }
 
 void loop() {
