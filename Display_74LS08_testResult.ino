@@ -27,7 +27,11 @@ void disp_74LS08_TestResult() {
       print_button_ICDetails_pressed();
       btn_ICDetails_pressed = true;
       touch_IsTouched();
-    } else if (bad_ic && cx > 440 && cx < 660 && cy > 400 && cy < 440) {
+    } else if (cx > 290 && cx < 510 && cy > 400 && cy < 440) {
+      print_button_TestAnotherIC_pressed();
+      btn_TestAnotherIC_pressed = true;
+      touch_IsTouched();
+    } else if (bad_ic && cx > 590 && cx < 790 && cy > 400 && cy < 440) {
       print_button_TestReport_pressed();
       btn_TestReport_pressed = true;
       touch_IsTouched();
@@ -47,10 +51,14 @@ void disp_74LS08_TestResult() {
       print_button_ICDetails();
       btn_ICDetails_pressed = false;
       //btn_pressed=2;
+    } else if (btn_TestAnotherIC_pressed && !touch_toggle) {
+      print_button_TestAnotherIC();
+      btn_TestAnotherIC_pressed = false;
+      btn_pressed = 3;
     } else if (bad_ic && btn_TestReport_pressed && !touch_toggle) {
       print_button_TestReport();
       btn_TestReport_pressed = false;
-      //btn_pressed=3;
+      //btn_pressed=4;
     }
   }
 
@@ -62,6 +70,9 @@ void disp_74LS08_TestResult() {
         break;
       case 1:
         currentScreen = 0x1111;
+        break;
+      case 3:
+        currentScreen = 0x1000;
         break;
       default:
         currentScreen = 0x0000;
@@ -264,10 +275,15 @@ void disp_74LS08_TestResult_INIT() {
   print_button_ICDetails();
 
 
+  //Test Another IC
+  print_button_TestAnotherIC();
+
+
   //TEST report
   if (bad_ic) {
     print_button_TestReport();
   }
+
 
 
   bmp_file = SD.open(file_name[3]);

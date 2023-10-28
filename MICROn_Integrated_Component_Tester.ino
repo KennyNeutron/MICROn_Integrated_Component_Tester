@@ -75,7 +75,7 @@ uint32_t touch_last_millis = 0;
 uint32_t blink_last_millis = 0;
 bool blink = false;
 
-uint16_t currentScreen = 0x0000;
+uint16_t currentScreen = 0x1110;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -84,6 +84,7 @@ bool btn_testIC_pressed = false;
 
 bool btn_TruthTable_pressed = false;
 bool btn_ICDetails_pressed = false;
+bool btn_TestAnotherIC_pressed = false;
 bool btn_TestReport_pressed = false;
 
 bool bad_ic = false;
