@@ -93,7 +93,7 @@ uint32_t touch_last_millis = 0;
 uint32_t blink_last_millis = 0;
 bool blink = false;
 
-uint16_t currentScreen = 0x1112;
+uint16_t currentScreen = 0x0000;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -111,7 +111,7 @@ bool errorLG2 = false;
 bool errorLG3 = false;
 bool errorLG4 = false;
 
-uint8_t IC_tested = IC_74LS08;
+uint8_t IC_tested = 0x00;
 
 
 void setup() {
