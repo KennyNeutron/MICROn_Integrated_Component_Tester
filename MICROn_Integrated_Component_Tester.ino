@@ -75,7 +75,7 @@ uint32_t touch_last_millis = 0;
 uint32_t blink_last_millis = 0;
 bool blink = false;
 
-uint16_t currentScreen = 0x1110;
+uint16_t currentScreen = 0x0000;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -150,8 +150,8 @@ void loop() {
     case 0x1110:
       disp_74LS08_TestResult();
       break;
-    case 0x1111:
-      disp_TruthTable();
+    case 0x1114:
+      disp_TestReport();
       break;
     case 0x2000:
       disp_Resistor_test();

@@ -46,7 +46,7 @@ void disp_74LS08_TestResult() {
     } else if (btn_TruthTable_pressed && !touch_toggle) {
       print_button_TruthTable();
       btn_TruthTable_pressed = false;
-      btn_pressed = 1;
+      //btn_pressed = 1;
     } else if (btn_ICDetails_pressed && !touch_toggle) {
       print_button_ICDetails();
       btn_ICDetails_pressed = false;
@@ -58,7 +58,7 @@ void disp_74LS08_TestResult() {
     } else if (bad_ic && btn_TestReport_pressed && !touch_toggle) {
       print_button_TestReport();
       btn_TestReport_pressed = false;
-      //btn_pressed=4;
+      btn_pressed = 4;
     }
   }
 
@@ -68,11 +68,11 @@ void disp_74LS08_TestResult() {
       case 255:
         currentScreen = 0x0000;
         break;
-      case 1:
-        currentScreen = 0x1111;
-        break;
       case 3:
         currentScreen = 0x1000;
+        break;
+      case 4:
+        currentScreen = 0x1114;
         break;
       default:
         currentScreen = 0x0000;
