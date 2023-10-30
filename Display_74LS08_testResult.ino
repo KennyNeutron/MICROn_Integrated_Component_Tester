@@ -46,11 +46,11 @@ void disp_74LS08_TestResult() {
     } else if (btn_TruthTable_pressed && !touch_toggle) {
       print_button_TruthTable();
       btn_TruthTable_pressed = false;
-      //btn_pressed = 1;
+      btn_pressed = 1;
     } else if (btn_ICDetails_pressed && !touch_toggle) {
       print_button_ICDetails();
       btn_ICDetails_pressed = false;
-      //btn_pressed=2;
+      btn_pressed = 2;
     } else if (btn_TestAnotherIC_pressed && !touch_toggle) {
       print_button_TestAnotherIC();
       btn_TestAnotherIC_pressed = false;
@@ -67,6 +67,12 @@ void disp_74LS08_TestResult() {
     switch (btn_pressed) {
       case 255:
         currentScreen = 0x0000;
+        break;
+      case 1:
+        currentScreen = 0x1111;
+        break;
+      case 2:
+        currentScreen = 0x1112;
         break;
       case 3:
         currentScreen = 0x1000;
@@ -145,6 +151,8 @@ void disp_74LS08_TestResult_exit() {
   errorLG2 = false;
   errorLG3 = false;
   errorLG4 = false;
+
+  IC_tested = IC_74LS08;
 }
 
 bool get_TestResult_74LS08_LG1() {

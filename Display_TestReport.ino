@@ -57,7 +57,7 @@ void disp_TestReport_INIT() {
   draw_bmp_picture(bmp_file, 10, 5);
   bmp_file.close();
 
-  display_TitleBar("Integrated Circuit TESTER", "IC- TRUTH Table");
+  display_TitleBar("Integrated Circuit TESTER", "IC- Test Report");
 
   disp_DrawTable(230, 140, WHITE, BLUE, WHITE, 1, get_LG1_Result00(), get_LG1_Result01(), get_LG1_Result10(), get_LG1_Result11());
 

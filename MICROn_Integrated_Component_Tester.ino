@@ -58,6 +58,24 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define GREENYELLOW 0xAFE5 /* 173, 255,  47 */
 #define PINK 0xF81F        /* 255,   0, 255 */
 
+
+//ICs
+#define IC_74LS08 0x01  //AND Gate
+#define IC_74LS04 0x02  //NOT Gate
+#define IC_74LS08 0x03  //OR Gate
+
+#define IC_74LS00 0x04  //NAND Gate
+#define IC_74LS02 0x05  //NOR Gate
+#define IC_74LS86 0x06  //XOR Gate
+
+#define IC_74LS83 0x07  //BINARY ADDER
+#define IC_74LS47 0x08  //BCD
+#define IC_74LS48 0x09  //BCD
+
+#define IC_74LS147 0x0A  //Reverse BCD to 9L
+#define IC_74LS42 0x0B   //BCD to 10L
+#define IC_NE555 0x0C    //NE555 :D
+
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
 #define FILE_NUMBER 5
 #define FILE_NAME_SIZE_MAX 20
@@ -75,7 +93,7 @@ uint32_t touch_last_millis = 0;
 uint32_t blink_last_millis = 0;
 bool blink = false;
 
-uint16_t currentScreen = 0x0000;
+uint16_t currentScreen = 0x1112;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -92,6 +110,8 @@ bool errorLG1 = false;
 bool errorLG2 = false;
 bool errorLG3 = false;
 bool errorLG4 = false;
+
+uint8_t IC_tested = IC_74LS08;
 
 
 void setup() {
@@ -149,6 +169,12 @@ void loop() {
       break;
     case 0x1110:
       disp_74LS08_TestResult();
+      break;
+    case 0x1111:
+      disp_TruthTable();
+      break;
+    case 0x1112:
+      disp_ICDetails();
       break;
     case 0x1114:
       disp_TestReport();
