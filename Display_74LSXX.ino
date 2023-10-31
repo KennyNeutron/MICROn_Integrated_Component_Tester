@@ -61,6 +61,14 @@ void disp_74LSXX() {
       case IC_74LS00:
         currentScreen = 0x1410;
         break;
+      /*
+      case IC_74LS02:
+        currentScreen = 0x1510;
+        break;
+        */
+      case IC_74LS86:
+        currentScreen = 0x1610;
+        break;
     }
     disp_74LSXX_exit();
   }
@@ -118,6 +126,13 @@ void disp_74LSXX_INIT() {
       break;
     case IC_74LS00:
       display_TitleBar("Integrated Circuit TESTER", "74LS00- NAND Gate");
+      break;
+    case IC_74LS02:
+      display_TitleBar("Integrated Circuit TESTER", "74LS02- NOR Gate");
+      show_string("UNAVAILABLE:UNDER DEVELOPMENT", CENTER, 210, 4, WHITE, BLACK, 0);
+      break;
+    case IC_74LS86:
+      display_TitleBar("Integrated Circuit TESTER", "74LS86- XOR Gate");
       break;
   }
 

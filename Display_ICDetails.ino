@@ -44,6 +44,9 @@ void disp_ICDetails() {
           case IC_74LS00:
             currentScreen = 0x1410;
             break;
+          case IC_74LS86:
+            currentScreen = 0x1610;
+            break;
           default:
             currentScreen = 0x0000;
             break;
@@ -82,6 +85,10 @@ void disp_ICDetails_INIT() {
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS00 IC Details");
       ICDetails_74LS00();
       break;
+    case IC_74LS86:
+      //74LS86-XOR
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS86 IC Details");
+      ICDetails_74LS86();
   }
 
 
@@ -98,4 +105,8 @@ void ICDetails_74LS32() {
 
 void ICDetails_74LS00() {
   show_string("The 74LS00 is a quad 2-input NAND gate\nintegrated circuit. It contains four\nseparate NAND gates, each with two input\npins. These gates perform logical NAND\noperations on binary inputs, producing\na binary output based on the logical states\nof the inputs. The 74LS00 is commonly used\nin digital logic circuits for various\napplications, including signal inversion\nand logic functions.", 0, 150, 3, WHITE, WHITE, 0);
+}
+
+void ICDetails_74LS86() {
+  show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins. These gates perform\nlogical XOR (exclusive OR) operations\non binary inputs, producing a binary\noutput based on the logical states\nof the inputs. The 74LS86 is commonly\nused in digital logic circuits for various\napplications, including arithmetic and\ndata processing tasks, as well as in\nbuilding parity generators and\ndetectors.", 0, 150, 3, WHITE, WHITE, 0);
 }

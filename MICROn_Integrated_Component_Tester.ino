@@ -76,7 +76,7 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define IC_NE555 0x0C    //NE555 :D
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 7
+#define FILE_NUMBER 8
 #define FILE_NAME_SIZE_MAX 20
 
 uint32_t bmp_offset = 0;
@@ -131,6 +131,7 @@ void setup() {
     strcpy(file_name[3], "gateAND.bmp");
     strcpy(file_name[4], "gateOR.bmp");
     strcpy(file_name[5], "gateNAND.bmp");
+    strcpy(file_name[6], "gateXOR.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
@@ -138,6 +139,7 @@ void setup() {
     strcpy(file_name[3], "gateAND.bmp");
     strcpy(file_name[4], "gateOR.bmp");
     strcpy(file_name[5], "gateNAND.bmp");
+    strcpy(file_name[6], "gateXOR.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
@@ -158,7 +160,6 @@ void setup() {
 }
 
 void loop() {
-
 
   switch (currentScreen) {
     case 0x0000:
@@ -188,7 +189,12 @@ void loop() {
     case 0x1410:
       disp_74LS00_TestResult();
       break;
-
+    case 0x1510:
+      disp_74LS02_TestResult();
+      break;
+    case 0x1610:
+      disp_74LS86_TestResult();
+      break;
     case 0x2000:
       disp_Resistor_test();
       break;
