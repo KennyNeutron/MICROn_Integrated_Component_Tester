@@ -75,7 +75,7 @@ void disp_TruthTable_INIT() {
 
     case IC_74LS32:
       //74LS32-OR
-      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS08 TRUTH TABLE");
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS32 TRUTH TABLE");
       disp_DrawTruthTable(320, 150, WHITE, BLUE, WHITE, "OR gate", 0, 1, 1, 1);
       break;
   }

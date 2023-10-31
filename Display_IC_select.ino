@@ -177,6 +177,7 @@ void disp_IC_select() {
 
       btn_74LS08_pressed = false;
       btn_pressed = 1;
+      IC_tested = IC_74LS08;
     } else if (btn_74LS04_pressed && !touch_toggle) {
       //74LS04 Button
       tft.Set_Draw_color(GREEN);
@@ -196,6 +197,7 @@ void disp_IC_select() {
 
       btn_74LS32_pressed = false;
       btn_pressed = 3;
+      IC_tested = IC_74LS32;
     } else if (btn_74LS00_pressed && !touch_toggle) {
       //74LS00 Button
       tft.Set_Draw_color(GREEN);
@@ -205,6 +207,8 @@ void disp_IC_select() {
       show_string("74LS00", 50, 230, 4, BLACK, GREEN, 0);
 
       btn_74LS00_pressed = false;
+      btn_pressed = 4;
+      IC_tested = IC_74LS00;
     } else if (btn_74LS02_pressed && !touch_toggle) {
       //74LS02 Button
       tft.Set_Draw_color(GREEN);
@@ -290,7 +294,10 @@ void disp_IC_select() {
         currentScreen = 0x1100;
         break;
       case 3:
-        currentScreen = 0x1300;
+        currentScreen = 0x1100;
+        break;
+      case 4:
+        currentScreen = 0x1100;
         break;
     }
     disp_IC_select_exit();

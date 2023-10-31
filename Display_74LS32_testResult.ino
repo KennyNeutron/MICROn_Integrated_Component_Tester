@@ -2,6 +2,7 @@
 //Screen ID: 0x1310
 
 bool disp_74LS32_TestResult_init = false;
+bool ICtest_74LS32_done = false;
 
 void disp_74LS32_TestResult() {
   if (!disp_74LS32_TestResult_init) {
@@ -294,7 +295,7 @@ void disp_74LS32_TestResult_INIT() {
 
 
 
-  bmp_file = SD.open(file_name[3]);
+  bmp_file = SD.open(file_name[4]);
   draw_bmp_picture(bmp_file, 50, 150);
   bmp_file.close();
 

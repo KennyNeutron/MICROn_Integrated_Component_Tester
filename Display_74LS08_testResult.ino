@@ -2,6 +2,7 @@
 //Screen ID: 0x1110
 
 bool disp_74LS08_TestResult_init = false;
+bool ICtest_74LS08_done = false;
 
 void disp_74LS08_TestResult() {
   if (!disp_74LS08_TestResult_init) {
