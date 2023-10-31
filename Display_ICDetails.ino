@@ -38,6 +38,9 @@ void disp_ICDetails() {
           case IC_74LS08:
             currentScreen = 0x1110;
             break;
+          case IC_74LS32:
+            currentScreen = 0x1310;
+            break;
           default:
             currentScreen = 0x0000;
             break;
@@ -66,6 +69,11 @@ void disp_ICDetails_INIT() {
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS08 IC Details");
       ICDetails_74LS08();
       break;
+    case IC_74LS32:
+      //74LS32-OR
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS32 IC Details");
+      ICDetails_74LS32();
+      break;
   }
 
 
@@ -74,4 +82,8 @@ void disp_ICDetails_INIT() {
 
 void ICDetails_74LS08() {
   show_string("The 74LS08 is a quad 2-input AND gate\nintegrated circuit. It has four separate AND\ngates that perform logical AND operations on\ntwo binary inputs, producing a binary output \nbased on the inputs' logical states. This IC\nis commonly used in digital logic circuits \nfor tasks like signal processing and\ndecoding.", 0, 150, 3, WHITE, WHITE, 0);
+}
+
+void ICDetails_74LS32() {
+  show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins. These gates perform logical OR\noperations on binary inputs, resulting\nin a binary output based on the logical\nstates of the inputs. The 74LS32 is\ncommonly utilized in digital logic circuits\nfor tasks such as combining or \nselecting signals.", 0, 150, 3, WHITE, WHITE, 0);
 }

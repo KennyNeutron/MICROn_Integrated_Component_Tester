@@ -37,7 +37,17 @@ void disp_TestReport() {
   if (!btn_Back_pressed && btn_pressed > 0) {
     switch (btn_pressed) {
       case 255:
-        currentScreen = 0x1110;
+        switch (IC_tested) {
+          case IC_74LS08:
+            currentScreen = 0x1110;
+            break;
+          case IC_74LS32:
+            currentScreen = 0x1310;
+            break;
+          default:
+            currentScreen = 0x0000;
+            break;            
+        }
         break;
     }
     disp_TestReport_exit();

@@ -62,7 +62,7 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 //ICs
 #define IC_74LS08 0x01  //AND Gate
 #define IC_74LS04 0x02  //NOT Gate
-#define IC_74LS08 0x03  //OR Gate
+#define IC_74LS32 0x03  //OR Gate
 
 #define IC_74LS00 0x04  //NAND Gate
 #define IC_74LS02 0x05  //NOR Gate
@@ -112,7 +112,7 @@ bool errorLG3 = false;
 bool errorLG4 = false;
 
 uint8_t IC_tested = 0x00;
-
+uint32_t ICtest_last_millis = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -178,6 +178,12 @@ void loop() {
       break;
     case 0x1114:
       disp_TestReport();
+      break;
+    case 0x1300:
+      disp_74LS32();
+      break;
+    case 0x1310:
+      disp_74LS32_TestResult();
       break;
     case 0x2000:
       disp_Resistor_test();
