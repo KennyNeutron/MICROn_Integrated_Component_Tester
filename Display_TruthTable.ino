@@ -42,6 +42,9 @@ void disp_TruthTable() {
           case IC_74LS32:
             currentScreen = 0x1310;
             break;
+          case IC_74LS00:
+            currentScreen = 0x1410;
+            break;
           default:
             currentScreen = 0x0000;
             break;
@@ -77,6 +80,11 @@ void disp_TruthTable_INIT() {
       //74LS32-OR
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS32 TRUTH TABLE");
       disp_DrawTruthTable(320, 150, WHITE, BLUE, WHITE, "OR gate", 0, 1, 1, 1);
+      break;
+    case IC_74LS00:
+      //74LS00-NAND
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS00 TRUTH TABLE");
+      disp_DrawTruthTable(320, 150, WHITE, BLUE, WHITE, "NAND gate", 1, 1, 1, 0);
       break;
   }
 

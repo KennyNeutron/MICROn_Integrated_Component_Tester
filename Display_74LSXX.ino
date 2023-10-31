@@ -58,6 +58,9 @@ void disp_74LSXX() {
       case IC_74LS32:
         currentScreen = 0x1310;
         break;
+      case IC_74LS00:
+        currentScreen = 0x1410;
+        break;
     }
     disp_74LSXX_exit();
   }
@@ -111,7 +114,10 @@ void disp_74LSXX_INIT() {
       display_TitleBar("Integrated Circuit TESTER", "74LS08- AND Gate");
       break;
     case IC_74LS32:
-      display_TitleBar("Integrated Circuit TESTER", "74LS32- AND Gate");
+      display_TitleBar("Integrated Circuit TESTER", "74LS32- OR Gate");
+      break;
+    case IC_74LS00:
+      display_TitleBar("Integrated Circuit TESTER", "74LS00- NAND Gate");
       break;
   }
 

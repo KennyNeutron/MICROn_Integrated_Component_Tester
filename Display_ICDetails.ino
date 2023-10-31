@@ -41,6 +41,9 @@ void disp_ICDetails() {
           case IC_74LS32:
             currentScreen = 0x1310;
             break;
+          case IC_74LS00:
+            currentScreen = 0x1410;
+            break;
           default:
             currentScreen = 0x0000;
             break;
@@ -74,6 +77,11 @@ void disp_ICDetails_INIT() {
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS32 IC Details");
       ICDetails_74LS32();
       break;
+    case IC_74LS00:
+      //74LS00-NAND
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS00 IC Details");
+      ICDetails_74LS00();
+      break;
   }
 
 
@@ -86,4 +94,8 @@ void ICDetails_74LS08() {
 
 void ICDetails_74LS32() {
   show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins. These gates perform logical OR\noperations on binary inputs, resulting\nin a binary output based on the logical\nstates of the inputs. The 74LS32 is\ncommonly utilized in digital logic circuits\nfor tasks such as combining or \nselecting signals.", 0, 150, 3, WHITE, WHITE, 0);
+}
+
+void ICDetails_74LS00() {
+  show_string("The 74LS00 is a quad 2-input NAND gate\nintegrated circuit. It contains four\nseparate NAND gates, each with two input\npins. These gates perform logical NAND\noperations on binary inputs, producing\na binary output based on the logical states\nof the inputs. The 74LS00 is commonly used\nin digital logic circuits for various\napplications, including signal inversion\nand logic functions.", 0, 150, 3, WHITE, WHITE, 0);
 }

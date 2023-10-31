@@ -44,9 +44,12 @@ void disp_TestReport() {
           case IC_74LS32:
             currentScreen = 0x1310;
             break;
+          case IC_74LS00:
+            currentScreen = 0x1410;
+            break;
           default:
             currentScreen = 0x0000;
-            break;            
+            break;
         }
         break;
     }
