@@ -295,7 +295,7 @@ void disp_74LS86_TestResult_INIT() {
 
 
 
-  bmp_file = SD.open(file_name[6]);
+  bmp_file = SD.open(file_name[7]);
   draw_bmp_picture(bmp_file, 50, 150);
   bmp_file.close();
 

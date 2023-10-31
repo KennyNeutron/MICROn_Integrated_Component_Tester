@@ -52,8 +52,14 @@ void IC14_pinMode_init() {
 
   pinMode(IC14_Pin14, OUTPUT);  //VCC;
 
-  digitalWrite(IC14_Pin7, 0);   //GND
-  digitalWrite(IC14_Pin14, 1);  //VCC
+  if (IC_tested == IC_74LS02) {
+    digitalWrite(IC14_Pin7, 1);   //VCC
+    digitalWrite(IC14_Pin14, 0);  //GND
+  } else {
+    digitalWrite(IC14_Pin7, 0);   //GND
+    digitalWrite(IC14_Pin14, 1);  //VCC
+  }
+
 
   digitalWrite(IC14_Pin1, 0);
   digitalWrite(IC14_Pin2, 0);
