@@ -110,6 +110,13 @@ bool errorLG2 = false;
 bool errorLG3 = false;
 bool errorLG4 = false;
 
+bool errorNG1 =false;
+bool errorNG2 = false;
+bool errorNG3 = false;
+bool errorNG4 = false;
+bool errorNG5 = false;
+bool errorNG6 = false;
+
 uint8_t IC_tested = 0x00;
 uint32_t ICtest_last_millis = 0;
 
@@ -184,6 +191,9 @@ void loop() {
       break;
     case 0x1114:
       disp_TestReport();
+      break;
+    case 0x1210:
+      disp_74LS04_TestResult();
       break;
     case 0x1310:
       disp_74LS32_TestResult();

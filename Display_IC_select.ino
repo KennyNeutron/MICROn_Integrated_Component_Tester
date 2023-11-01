@@ -187,6 +187,8 @@ void disp_IC_select() {
       show_string("74LS04", CENTER, 150, 4, BLACK, GREEN, 0);
 
       btn_74LS04_pressed = false;
+      btn_pressed = 2;
+      IC_tested = IC_74LS04;
     } else if (btn_74LS32_pressed && !touch_toggle) {
       //74LS32 Button
       tft.Set_Draw_color(GREEN);
@@ -295,6 +297,9 @@ void disp_IC_select() {
         currentScreen = 0x0000;
         break;
       case 1:
+        currentScreen = 0x1100;
+        break;
+      case 2:
         currentScreen = 0x1100;
         break;
       case 3:

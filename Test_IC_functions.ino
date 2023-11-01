@@ -10,7 +10,7 @@
     Date Started: 10-27-2023
     Date Finished: N/A
 */
-
+//######### LOGIC GATES #########
 bool LG1_Result00 = false;
 bool LG1_Result01 = false;
 bool LG1_Result10 = false;
@@ -30,6 +30,226 @@ bool LG4_Result00 = false;
 bool LG4_Result01 = false;
 bool LG4_Result10 = false;
 bool LG4_Result11 = false;
+//###############################
+
+
+//######### NOT GATES #########
+bool NG1_Result0 = false;
+bool NG1_Result1 = false;
+
+bool NG2_Result0 = false;
+bool NG2_Result1 = false;
+
+bool NG3_Result0 = false;
+bool NG3_Result1 = false;
+
+bool NG4_Result0 = false;
+bool NG4_Result1 = false;
+
+bool NG5_Result0 = false;
+bool NG5_Result1 = false;
+
+bool NG6_Result0 = false;
+bool NG6_Result1 = false;
+//###############################
+
+
+void IC14_74LS04_pinMode_init() {
+  pinMode(IC14_Pin1, OUTPUT);
+  pinMode(IC14_Pin2, INPUT);
+
+  pinMode(IC14_Pin3, OUTPUT);
+  pinMode(IC14_Pin4, INPUT);
+
+  pinMode(IC14_Pin5, OUTPUT);
+  pinMode(IC14_Pin6, INPUT);
+
+  pinMode(IC14_Pin7, OUTPUT);  //GND pin
+
+  pinMode(IC14_Pin8, INPUT);
+  pinMode(IC14_Pin9, OUTPUT);
+
+  pinMode(IC14_Pin10, INPUT);
+  pinMode(IC14_Pin11, OUTPUT);
+
+  pinMode(IC14_Pin12, INPUT);
+  pinMode(IC14_Pin13, OUTPUT);
+
+  pinMode(IC14_Pin14, OUTPUT);  //VCC;
+
+  digitalWrite(IC14_Pin7, 0);   //GND
+  digitalWrite(IC14_Pin14, 1);  //VCC
+
+  digitalWrite(IC14_Pin1, 0);
+  digitalWrite(IC14_Pin3, 0);
+  digitalWrite(IC14_Pin5, 0);
+  digitalWrite(IC14_Pin9, 0);
+  digitalWrite(IC14_Pin11, 0);
+  digitalWrite(IC14_Pin13, 0);
+
+  Serial.println("IC POWER ON!");
+}
+
+void test_IC14_74LS04() {
+  Serial.print("\n############################################################################\n");
+  test_NotGate1();
+  test_NotGate2();
+  test_NotGate3();
+  test_NotGate4();
+  test_NotGate5();
+  test_NotGate6();
+  Serial.print("\n############################################################################\n");
+}
+
+void test_NotGate6() {
+  bool tResult0 = false;
+  bool tResult1 = false;
+
+  Serial.print("\n");
+  digitalWrite(IC14_Pin13, 0);
+  tResult0 = digitalRead(IC14_Pin12);
+  NG6_Result0 = tResult0;
+  Serial.println("NOT Gate6:\tPin13:0\tPin12:" + String(tResult0) + "\t\tNG6_R0:" + String(get_NG6_Result0()));
+  delayMicroseconds(10);
+
+  digitalWrite(IC14_Pin13, 1);
+  tResult1 = digitalRead(IC14_Pin12);
+  NG6_Result1 = tResult1;
+  Serial.println("NOT Gate6:\tPin12:1\tPin12:" + String(tResult0) + "\t\tNG6_R1:" + String(get_NG6_Result1()));
+}
+
+void test_NotGate5() {
+  bool tResult0 = false;
+  bool tResult1 = false;
+
+  Serial.print("\n");
+  digitalWrite(IC14_Pin11, 0);
+  tResult0 = digitalRead(IC14_Pin10);
+  NG5_Result0 = tResult0;
+  Serial.println("NOT Gate5:\tPin11:0\tPin10:" + String(tResult0) + "\t\tNG5_R0:" + String(get_NG5_Result0()));
+  delayMicroseconds(10);
+
+  digitalWrite(IC14_Pin11, 1);
+  tResult1 = digitalRead(IC14_Pin10);
+  NG5_Result1 = tResult1;
+  Serial.println("NOT Gate5:\tPin11:1\tPin10:" + String(tResult0) + "\t\tNG5_R1:" + String(get_NG5_Result1()));
+}
+
+void test_NotGate4() {
+  bool tResult0 = false;
+  bool tResult1 = false;
+
+  Serial.print("\n");
+  digitalWrite(IC14_Pin9, 0);
+  tResult0 = digitalRead(IC14_Pin8);
+  NG4_Result0 = tResult0;
+  Serial.println("NOT Gate4:\tPin9:0\tPin8:" + String(tResult0) + "\t\tNG4_R0:" + String(get_NG4_Result0()));
+  delayMicroseconds(10);
+
+  digitalWrite(IC14_Pin9, 1);
+  tResult1 = digitalRead(IC14_Pin8);
+  NG4_Result1 = tResult1;
+  Serial.println("NOT Gate4:\tPin9:1\tPin8:" + String(tResult0) + "\t\tNG4_R1:" + String(get_NG4_Result1()));
+}
+
+void test_NotGate3() {
+  bool tResult0 = false;
+  bool tResult1 = false;
+
+  Serial.print("\n");
+  digitalWrite(IC14_Pin5, 0);
+  tResult0 = digitalRead(IC14_Pin6);
+  NG3_Result0 = tResult0;
+  Serial.println("NOT Gate3:\tPin5:0\tPin6:" + String(tResult0) + "\t\tNG3_R0:" + String(get_NG3_Result0()));
+  delayMicroseconds(10);
+
+  digitalWrite(IC14_Pin5, 1);
+  tResult1 = digitalRead(IC14_Pin6);
+  NG3_Result1 = tResult1;
+  Serial.println("NOT Gate3:\tPin5:1\tPin6:" + String(tResult0) + "\t\tNG3_R1:" + String(get_NG3_Result1()));
+}
+
+void test_NotGate2() {
+  bool tResult0 = false;
+  bool tResult1 = false;
+
+  Serial.print("\n");
+  digitalWrite(IC14_Pin3, 0);
+  tResult0 = digitalRead(IC14_Pin4);
+  NG2_Result0 = tResult0;
+  Serial.println("NOT Gate2:\tPin3:0\tPin4:" + String(tResult0) + "\t\tNG2_R0:" + String(get_NG2_Result0()));
+  delayMicroseconds(10);
+
+  digitalWrite(IC14_Pin3, 1);
+  tResult1 = digitalRead(IC14_Pin4);
+  NG2_Result1 = tResult1;
+  Serial.println("NOT Gate2:\tPin3:1\tPin4:" + String(tResult0) + "\t\tNG2_R1:" + String(get_NG2_Result1()));
+}
+
+void test_NotGate1() {
+  bool tResult0 = false;
+  bool tResult1 = false;
+
+  Serial.print("\n");
+  digitalWrite(IC14_Pin1, 0);
+  tResult0 = digitalRead(IC14_Pin2);
+  NG1_Result0 = tResult0;
+  Serial.println("NOT Gate1:\tPin1:0\tPin2:" + String(tResult0) + "\t\tNG1_R0:" + String(get_NG1_Result0()));
+  delayMicroseconds(10);
+
+  digitalWrite(IC14_Pin1, 1);
+  tResult1 = digitalRead(IC14_Pin2);
+  NG1_Result1 = tResult1;
+  Serial.println("NOT Gate1:\tPin1:1\tPin2:" + String(tResult0) + "\t\tNG1_R1:" + String(get_NG1_Result1()));
+}
+
+bool get_NG1_Result0() {
+  return NG1_Result0;
+}
+
+bool get_NG1_Result1() {
+  return NG1_Result1;
+}
+
+bool get_NG2_Result0() {
+  return NG2_Result0;
+}
+
+bool get_NG2_Result1() {
+  return NG2_Result1;
+}
+
+bool get_NG3_Result0() {
+  return NG3_Result0;
+}
+
+bool get_NG3_Result1() {
+  return NG3_Result1;
+}
+
+bool get_NG4_Result0() {
+  return NG4_Result0;
+}
+
+bool get_NG4_Result1() {
+  return NG4_Result1;
+}
+
+bool get_NG5_Result0() {
+  return NG5_Result0;
+}
+
+bool get_NG5_Result1() {
+  return NG5_Result1;
+}
+
+bool get_NG6_Result0() {
+  return NG6_Result0;
+}
+
+bool get_NG6_Result1() {
+  return NG6_Result1;
+}
 
 void IC14_pinMode_init() {
   pinMode(IC14_Pin1, OUTPUT);
@@ -59,7 +279,6 @@ void IC14_pinMode_init() {
     digitalWrite(IC14_Pin7, 0);   //GND
     digitalWrite(IC14_Pin14, 1);  //VCC
   }
-
 
   digitalWrite(IC14_Pin1, 0);
   digitalWrite(IC14_Pin2, 0);
@@ -96,7 +315,6 @@ void IC14_pinMode_exit() {
 
 
 void test_IC14() {
-
   Serial.print("\n############################################################################\n");
   test_LogicGate1();
   test_LogicGate2();

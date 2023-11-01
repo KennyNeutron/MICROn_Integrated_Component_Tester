@@ -55,6 +55,9 @@ void disp_74LSXX() {
       case IC_74LS08:
         currentScreen = 0x1110;
         break;
+      case IC_74LS04:
+        currentScreen = 0x1210;
+        break;
       case IC_74LS32:
         currentScreen = 0x1310;
         break;
@@ -64,7 +67,6 @@ void disp_74LSXX() {
       case IC_74LS02:
         currentScreen = 0x1510;
         break;
-
       case IC_74LS86:
         currentScreen = 0x1610;
         break;
@@ -85,7 +87,11 @@ void disp_74LSXX() {
 
 void test_74LSXX() {
 
-  test_IC14();
+  if (IC_tested == IC_74LS04) {
+    test_IC14_74LS04();
+  } else {
+    test_IC14();
+  }
 
   show_string("TESTING IC", CENTER, 210, 6, WHITE, BLACK, 0);
   ICtest_74LSXX_started = true;
@@ -109,7 +115,12 @@ void disp_74LSXX_exit() {
 void disp_74LSXX_INIT() {
   tft.Fill_Screen(BLACK);
 
-  IC14_pinMode_init();
+  if (IC_tested == IC_74LS04) {
+    IC14_74LS04_pinMode_init();
+  } else {
+    IC14_pinMode_init();
+  }
+
 
   File bmp_file;
   bmp_file = SD.open(file_name[2]);
@@ -119,6 +130,9 @@ void disp_74LSXX_INIT() {
   switch (IC_tested) {
     case IC_74LS08:
       display_TitleBar("Integrated Circuit TESTER", "74LS08- AND Gate");
+      break;
+    case IC_74LS04:
+      display_TitleBar("Integrated Circuit TESTER", "74LS04- NOT Gate");
       break;
     case IC_74LS32:
       display_TitleBar("Integrated Circuit TESTER", "74LS32- OR Gate");
