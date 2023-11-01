@@ -107,64 +107,64 @@ void disp_74LS04_TestResult_exit() {
 void disp_74LS04_TestResult_INIT() {
   uint8_t NumOf_ErrorGate = 0;
 
-  String str_NumOf_ErrorGate = "# Of BAD Logic Gate(s): ";
-  String str_ErrorGate = "Bad Logic Gate(s): ";
+  String str_NumOf_ErrorGate = "# Of BAD NOT Gate(s): ";
+  String str_ErrorGate = "Bad NOT Gate(s):";
 
   Serial.println("\n\n\nLooking For ERRORS");
 
   //test NG1
   if (!get_TestResult_74LS04_NG1()) {
     Serial.println("NG1 ERROR");
-    str_ErrorGate = str_ErrorGate + " LG1";
+    str_ErrorGate = str_ErrorGate + "NG1";
     errorNG1 = true;
     NumOf_ErrorGate++;
   }
   if (!get_TestResult_74LS04_NG2()) {
     Serial.println("NG2 ERROR");
     if (errorNG1) {
-      str_ErrorGate = str_ErrorGate + ", NG2";
+      str_ErrorGate = str_ErrorGate + ",NG2";
     } else {
-      str_ErrorGate = str_ErrorGate + " NG2";
+      str_ErrorGate = str_ErrorGate + "NG2";
     }
     errorNG2 = true;
     NumOf_ErrorGate++;
   }
   if (!get_TestResult_74LS04_NG3()) {
     Serial.println("NG3 ERROR");
-    if (errorNG1) {
-      str_ErrorGate = str_ErrorGate + ", NG3";
+    if (errorNG1 || errorNG2) {
+      str_ErrorGate = str_ErrorGate + ",NG3";
     } else {
-      str_ErrorGate = str_ErrorGate + " NG3";
+      str_ErrorGate = str_ErrorGate + "NG3";
     }
     errorNG3 = true;
     NumOf_ErrorGate++;
   }
   if (!get_TestResult_74LS04_NG4()) {
     Serial.println("NG4 ERROR");
-    if (errorNG1) {
-      str_ErrorGate = str_ErrorGate + ", NG4";
+    if (errorNG1 || errorNG2 || errorNG3) {
+      str_ErrorGate = str_ErrorGate + ",NG4";
     } else {
-      str_ErrorGate = str_ErrorGate + " NG4";
+      str_ErrorGate = str_ErrorGate + "NG4";
     }
     errorNG4 = true;
     NumOf_ErrorGate++;
   }
   if (!get_TestResult_74LS04_NG5()) {
     Serial.println("NG5 ERROR");
-    if (errorNG1) {
-      str_ErrorGate = str_ErrorGate + ", NG5";
+    if (errorNG1 || errorNG2 || errorNG3 || errorNG4) {
+      str_ErrorGate = str_ErrorGate + ",NG5";
     } else {
-      str_ErrorGate = str_ErrorGate + " NG5";
+      str_ErrorGate = str_ErrorGate + "NG5";
     }
     errorNG5 = true;
     NumOf_ErrorGate++;
   }
   if (!get_TestResult_74LS04_NG6()) {
     Serial.println("NG6 ERROR");
-    if (errorNG1) {
-      str_ErrorGate = str_ErrorGate + ", NG6";
+    if (errorNG1 || errorNG2 || errorNG3 || errorNG4 || errorNG5) {
+      str_ErrorGate = str_ErrorGate + ",NG6";
     } else {
-      str_ErrorGate = str_ErrorGate + " NG6";
+      str_ErrorGate = str_ErrorGate + "NG6";
     }
     errorNG6 = true;
     NumOf_ErrorGate++;
@@ -211,6 +211,9 @@ void disp_74LS04_TestResult_INIT() {
   }
 
 
+  show_string(str_NumOf_ErrorGate + String(NumOf_ErrorGate), 300, 230, 2, WHITE, BLACK, 0);
+  show_string(str_ErrorGate, 300, 270, 2, WHITE, BLACK, 0);
+
   //Truth Table Button
   print_button_TruthTable();
 
@@ -228,7 +231,11 @@ void disp_74LS04_TestResult_INIT() {
     print_button_TestReport();
   }
 
+  bmp_file = SD.open(file_name[8]);
+  draw_bmp_picture(bmp_file, 50, 150);
+  bmp_file.close();
 
+  ICtest_74LS04_done = true;
   disp_74LS04_TestResult_init = true;
 }
 

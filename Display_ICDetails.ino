@@ -38,6 +38,9 @@ void disp_ICDetails() {
           case IC_74LS08:
             currentScreen = 0x1110;
             break;
+          case IC_74LS04:
+            currentScreen = 0x1210;
+            break;
           case IC_74LS32:
             currentScreen = 0x1310;
             break;
@@ -78,6 +81,11 @@ void disp_ICDetails_INIT() {
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS08 IC Details");
       ICDetails_74LS08();
       break;
+    case IC_74LS04:
+      //74LS04-NOT
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS04 IC Details");
+      ICDetails_74LS04();
+      break;
     case IC_74LS32:
       //74LS32-OR
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS32 IC Details");
@@ -107,6 +115,10 @@ void ICDetails_74LS08() {
   show_string("The 74LS08 is a quad 2-input AND gate\nintegrated circuit. It has four separate AND\ngates that perform logical AND operations on\ntwo binary inputs, producing a binary output \nbased on the inputs' logical states. This IC\nis commonly used in digital logic circuits \nfor tasks like signal processing and\ndecoding.", 0, 150, 3, WHITE, WHITE, 0);
 }
 
+void ICDetails_74LS04() {
+  show_string("The 74LS04 is a hex inverter integrated\ncircuit. It contains six individual\ninverters, each taking a single input\nsignal and producing the logical\ncomplement of that signal as the\noutput. In simpler terms,\nwhen you provide a high (1)\ninput to one of its inverters,\nit will produce a low (0) output,\nand vice versa.", 0, 150, 3, WHITE, WHITE, 0);
+}
+
 void ICDetails_74LS32() {
   show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins. These gates perform logical OR\noperations on binary inputs, resulting\nin a binary output based on the logical\nstates of the inputs. The 74LS32 is\ncommonly utilized in digital logic circuits\nfor tasks such as combining or \nselecting signals.", 0, 150, 3, WHITE, WHITE, 0);
 }
@@ -120,5 +132,5 @@ void ICDetails_74LS02() {
 }
 
 void ICDetails_74LS86() {
-  show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins. These gates perform\nlogical XOR (exclusive OR) operations\non binary inputs, producing a binary\noutput based on the logical states\nof the inputs. The 74LS86 is commonly\nused in digital logic circuits for various\napplications, including arithmetic and\ndata processing tasks, as well as in\nbuilding parity generators and\ndetectors.", 0, 150, 3, WHITE, WHITE, 0);
+  show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins. These gates perform\nlogical XOR (exclusive OR) operations\non binary inputs, producing a binary\noutput based on the logical states\nof the inputs.", 0, 150, 3, WHITE, WHITE, 0);
 }

@@ -39,6 +39,9 @@ void disp_TruthTable() {
           case IC_74LS08:
             currentScreen = 0x1110;
             break;
+          case IC_74LS04:
+            currentScreen = 0x1210;
+            break;
           case IC_74LS32:
             currentScreen = 0x1310;
             break;
@@ -80,6 +83,10 @@ void disp_TruthTable_INIT() {
       //74LS08-AND
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS08 TRUTH TABLE");
       disp_DrawTruthTable(320, 150, WHITE, BLUE, WHITE, "AND gate", 0, 0, 0, 1);
+      break;
+    case IC_74LS04:
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS04 TRUTH TABLE");
+      disp_DrawTableNG(350, 200, RED, GREEN, BLUE, 0, 1, 0);
       break;
 
     case IC_74LS32:
