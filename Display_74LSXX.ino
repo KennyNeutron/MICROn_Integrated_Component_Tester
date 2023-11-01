@@ -38,7 +38,14 @@ void disp_74LSXX() {
     } else if (btn_testIC_pressed && !touch_toggle) {
       //Test (74LSXX) Button
       print_button_test();
-      test_74LSXX();
+
+      if (IC_tested == IC_74LS47 || IC_tested == IC_74LS48) {
+        test_IC16_74LS4X();
+      } else {
+        test_74LSXX();
+      }
+
+
 
       ICtest_last_millis = millis();
       btn_testIC_pressed = false;
@@ -114,8 +121,9 @@ void disp_74LSXX_exit() {
 
 void disp_74LSXX_INIT() {
   tft.Fill_Screen(BLACK);
-
-  if (IC_tested == IC_74LS04) {
+  if (IC_tested == IC_74LS47 || IC_tested == IC_74LS48) {
+    IC16_74LS4X_pinMode_init();
+  } else if (IC_tested == IC_74LS04) {
     IC14_74LS04_pinMode_init();
   } else {
     IC14_pinMode_init();
@@ -147,6 +155,9 @@ void disp_74LSXX_INIT() {
       break;
     case IC_74LS86:
       display_TitleBar("Integrated Circuit TESTER", "74LS86- XOR Gate");
+      break;
+    case IC_74LS48:
+      display_TitleBar("Integrated Circuit TESTER", "74LS48- CC Seven Segment Decoder");
       break;
   }
 

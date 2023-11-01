@@ -1,6 +1,6 @@
 /*
     Electronic Component Tester on TFT Display
-    Test IC Functions
+    Test IC14 Functions
     Version 1.0.0
 
     by: MICROn Technology
