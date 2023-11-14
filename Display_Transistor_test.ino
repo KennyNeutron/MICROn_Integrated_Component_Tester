@@ -1,7 +1,16 @@
 //Screen: TRANSISTOR TEST SCREEN
 //Screen ID: 0x3000
 
+#define tPin1 A1
+#define tPin2 A2
+#define tPin3 A3
+#define tPin1_res A4
+#define tPin2_res A5
+#define tPin3_res A6
+
 bool disp_transistor_test_init = false;
+
+
 
 void disp_Transistor_test() {
   if (!disp_transistor_test_init) {
@@ -43,6 +52,12 @@ void disp_Transistor_test() {
 
 
 void disp_Transistor_test_exit() {
+  pinMode(tPin1, INPUT);
+  pinMode(tPin2, INPUT);
+  pinMode(tPin3, INPUT);
+  pinMode(tPin1_res, INPUT);
+  pinMode(tPin2_res, INPUT);
+  pinMode(tPin2_res, INPUT);
 
   btn_pressed = 0;
   disp_transistor_test_init = false;
@@ -60,4 +75,30 @@ void disp_Transistor_test_init() {
   display_TitleBar("Transistor TESTER", " ");
 
   disp_transistor_test_init = true;
+  transistor_orientation1();
+}
+
+
+void transistor_orientation1() {
+  pinMode(tPin1, INPUT);
+  pinMode(tPin2, INPUT);
+  pinMode(tPin3, OUTPUT);
+  pinMode(tPin1_res, INPUT);
+  pinMode(tPin2_res, OUTPUT);
+  pinMode(tPin2_res, INPUT);
+
+  digitalWrite(tPin2_res, 0);  //EMITTER PIN --> GND
+  digitalWrite(tPin2, 1);      //BASE PIN --> VCC
+
+  Serial.println("TRANSISTOR ORIENTATION #1 : 1-2-3 C-B-E");
+
+  delay(100);
+
+  Serial.println("Collector ADC Read: " + String(analogRead(tPin1)));
+
+  if (analogRead(tPin1) > 0) {
+    Serial.println("This transistor is PNP");
+  } else {
+    Serial.println("This transistor is NPN");
+  }
 }

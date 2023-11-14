@@ -3,5 +3,5 @@
     "board": "arduino:avr:mega",
     "sketch": "MICROn_Integrated_Component_Tester.ino",
     "programmer": "arduino:avrisp",
-    "port": "COM14"
+    "port": "COM15"
 }

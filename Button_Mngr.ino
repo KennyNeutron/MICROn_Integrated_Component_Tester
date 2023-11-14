@@ -39,7 +39,6 @@ void print_button_TruthTable_pressed() {
   tft.Draw_Round_Rectangle(290, 340, 510, 380, 6);
   show_string("TRUTH Table", CENTER, 350, 3, WHITE, BLUE, 0);
 }
-
 //############################################################################
 
 

@@ -24,7 +24,7 @@
 #define IC16_Pin2 10
 #define IC16_Pin3 9
 #define IC16_Pin4 8
-#define IC16_Pin5 7
+#define IC16_Pin5 7 
 #define IC16_Pin6 6
 #define IC16_Pin7 5
 #define IC16_Pin8 4

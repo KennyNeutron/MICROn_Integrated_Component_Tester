@@ -87,7 +87,7 @@ void IC14_74LS04_pinMode_init() {
   digitalWrite(IC14_Pin11, 0);
   digitalWrite(IC14_Pin13, 0);
 
-  Serial.println("IC POWER ON!");
+  Serial.println("IC14 POWER ON!");
 }
 
 void test_IC14_74LS04() {

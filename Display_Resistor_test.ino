@@ -59,7 +59,7 @@ void test_resistor() {
   float R2 = 10000;
   float Vi = 5.02;
   int analogValue = analogRead(resistor_read_pin);
-  float Vo = analogValue * (5.02 / 1023.0);
+  float Vo = analogValue * (Vi / 1023.0);
 
   R1 = ((Vi * R2) - (Vo * R2)) / Vo;
 
