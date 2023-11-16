@@ -53,6 +53,9 @@ void disp_ICDetails() {
           case IC_74LS86:
             currentScreen = 0x1610;
             break;
+          case IC_74LS48:
+            currentScreen = 0x1910;
+            break;
           default:
             currentScreen = 0x0000;
             break;
@@ -105,6 +108,11 @@ void disp_ICDetails_INIT() {
       //74LS86-XOR
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS86 IC Details");
       ICDetails_74LS86();
+      break;
+    case IC_74LS48:
+      //74LS48- BCD to 7Segment Common Cathode
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS48 IC Details");
+      break;
   }
 
 
@@ -112,25 +120,25 @@ void disp_ICDetails_INIT() {
 }
 
 void ICDetails_74LS08() {
-  show_string("The 74LS08 is a quad 2-input AND gate\nintegrated circuit. It has four separate AND\ngates that perform logical AND operations on\ntwo binary inputs, producing a binary output \nbased on the inputs' logical states.", 0, 150, 3, WHITE, WHITE, 0);
+  //show_string("The 74LS08 is a quad 2-input AND gate\nintegrated circuit. It has four separate AND\ngates that perform logical AND operations on\ntwo binary inputs, producing a binary output \nbased on the inputs' logical states.", 0, 150, 3, WHITE, WHITE, 0);
 }
 
 void ICDetails_74LS04() {
-  show_string("The 74LS04 is a hex inverter integrated\ncircuit. It contains six individual\ninverters, each taking a single input\nsignal and producing the logical\ncomplement of that signal as the\noutput.", 0, 150, 3, WHITE, WHITE, 0);
+  //show_string("The 74LS04 is a hex inverter integrated\ncircuit. It contains six individual\ninverters, each taking a single input\nsignal and producing the logical\ncomplement of that signal as the\noutput.", 0, 150, 3, WHITE, WHITE, 0);
 }
 
 void ICDetails_74LS32() {
-  show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
+  //show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
 }
 
 void ICDetails_74LS00() {
-  show_string("The 74LS00 is a quad 2-input NAND gate\nintegrated circuit. It contains four\nseparate NAND gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
+  //show_string("The 74LS00 is a quad 2-input NAND gate\nintegrated circuit. It contains four\nseparate NAND gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
 }
 
 void ICDetails_74LS02() {
-  show_string("The 74LS02 is a quad 2-input NOR gate\nintegrated circuit. It includes four\nindependent NOR gates, each with two\ninput pins. ", 0, 150, 3, WHITE, WHITE, 0);
+  //show_string("The 74LS02 is a quad 2-input NOR gate\nintegrated circuit. It includes four\nindependent NOR gates, each with two\ninput pins. ", 0, 150, 3, WHITE, WHITE, 0);
 }
 
 void ICDetails_74LS86() {
-  show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins.", 0, 150, 3, WHITE, WHITE, 0);
+  //show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins.", 0, 150, 3, WHITE, WHITE, 0);
 }

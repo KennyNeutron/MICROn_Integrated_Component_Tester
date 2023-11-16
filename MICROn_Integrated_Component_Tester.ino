@@ -76,7 +76,7 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define IC_NE555 0x0C    //NE555 :D
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 13
+#define FILE_NUMBER 16
 #define FILE_NAME_SIZE_MAX 20
 
 uint32_t bmp_offset = 0;
@@ -120,6 +120,8 @@ bool errorNG6 = false;
 uint8_t IC_tested = 0x00;
 uint32_t ICtest_last_millis = 0;
 
+uint8_t BCD_7Segment_Out[10];
+
 void setup() {
   Serial.begin(115200);
   Serial.println("System Starting...\nMICROn Component Tester V1.0");
@@ -145,6 +147,9 @@ void setup() {
     strcpy(file_name[10], "npnEBC.bmp");
     strcpy(file_name[11], "pnpCBE.bmp");
     strcpy(file_name[12], "pnpEBC.bmp");
+    strcpy(file_name[13], "BCDcc.bmp");
+    strcpy(file_name[14], "BCDca.bmp");
+    strcpy(file_name[15], "svnSeg.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
@@ -159,6 +164,9 @@ void setup() {
     strcpy(file_name[10], "npnEBC.bmp");
     strcpy(file_name[11], "pnpCBE.bmp");
     strcpy(file_name[12], "pnpEBC.bmp");
+    strcpy(file_name[13], "BCDcc.bmp");
+    strcpy(file_name[14], "BCDca.bmp");
+    strcpy(file_name[15], "svnSeg.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
@@ -203,6 +211,9 @@ void loop() {
     case 0x1114:
       disp_TestReport();
       break;
+    case 0x1115:
+      disp_TestReport_74LS47_74LS48();
+      break;
     case 0x1210:
       disp_74LS04_TestResult();
       break;
@@ -217,6 +228,9 @@ void loop() {
       break;
     case 0x1610:
       disp_74LS86_TestResult();
+      break;
+    case 0x1910:
+      disp_74LS48_TestResult();
       break;
     case 0x2000:
       disp_Resistor_test();

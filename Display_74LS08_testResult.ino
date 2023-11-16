@@ -145,7 +145,6 @@ void disp_74LS08_TestResult_exit() {
   disp_74LS08_TestResult_init = false;
   ICtest_74LS08_done = false;
 
-  disp_74LS08_TestResult_init = false;
   btn_pressed = 0;
 
   errorLG1 = false;

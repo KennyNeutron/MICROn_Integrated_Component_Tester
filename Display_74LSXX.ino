@@ -40,12 +40,12 @@ void disp_74LSXX() {
       print_button_test();
 
       if (IC_tested == IC_74LS47 || IC_tested == IC_74LS48) {
-        test_IC16_74LS4X();
+        Serial.println("******TESTING 16Pins 74LSXX");
+        test_74LSXX_16();
       } else {
-        test_74LSXX();
+        Serial.println("******TESTING 14Pins 74LSXX");
+        test_74LSXX_14();
       }
-
-
 
       ICtest_last_millis = millis();
       btn_testIC_pressed = false;
@@ -77,6 +77,13 @@ void disp_74LSXX() {
       case IC_74LS86:
         currentScreen = 0x1610;
         break;
+      case IC_74LS48:
+        currentScreen = 0x1910;
+        break;
+      default:
+        Serial.println("\n\n\n***********Return to HOME....");
+        currentScreen = 0x0000;
+        break;
     }
     disp_74LSXX_exit();
   }
@@ -92,7 +99,7 @@ void disp_74LSXX() {
   }
 }
 
-void test_74LSXX() {
+void test_74LSXX_14() {
 
   if (IC_tested == IC_74LS04) {
     test_IC14_74LS04();
@@ -100,6 +107,12 @@ void test_74LSXX() {
     test_IC14();
   }
 
+  show_string("TESTING IC", CENTER, 210, 6, WHITE, BLACK, 0);
+  ICtest_74LSXX_started = true;
+}
+
+void test_74LSXX_16() {
+  test_IC16_74LS4X();
   show_string("TESTING IC", CENTER, 210, 6, WHITE, BLACK, 0);
   ICtest_74LSXX_started = true;
 }

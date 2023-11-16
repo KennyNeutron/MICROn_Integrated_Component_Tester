@@ -26,7 +26,7 @@ uint8_t BCD_outG = IC16_Pin14;
 
 uint8_t BCD_IN = 0x00;
 
-uint8_t BCD_7Segment_Out[10];
+
 
 void IC16_74LS4X_pinMode_init() {
   pinMode(IC16_Pin3, INPUT);  //floating
