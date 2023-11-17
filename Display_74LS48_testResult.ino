@@ -1,4 +1,4 @@
-//Screen: Test IC 74LSD00
+//Screen: Test IC 74LS48
 //Screen ID: 0x1910
 
 bool disp_74LS48_TestResult_init = false;
@@ -7,7 +7,7 @@ bool ICtest_74LS48_done = false;
 
 void disp_74LS48_TestResult() {
   if (!disp_74LS48_TestResult_init) {
-    disp_74LS48_INIT();
+    disp_74LS48_TestResult_INIT();
   }
 
   if (ts.touched()) {
@@ -101,7 +101,7 @@ void disp_74LS48_TestResult_exit() {
   IC_tested = IC_74LS48;
 }
 
-void disp_74LS48_INIT() {
+void disp_74LS48_TestResult_INIT() {
   Serial.println("74LS48 IC test Result");
 
   for (int i = 0; i < 10; i++) {

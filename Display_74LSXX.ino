@@ -39,12 +39,36 @@ void disp_74LSXX() {
       //Test (74LSXX) Button
       print_button_test();
 
+      /*
       if (IC_tested == IC_74LS47 || IC_tested == IC_74LS48) {
         Serial.println("******TESTING 16Pins 74LSXX");
         test_74LSXX_16();
+      }
+      if (IC_tested == IC_74LS83) {
+        Serial.println("******TESTING 74LS83");
+        test_74LS83();
       } else {
         Serial.println("******TESTING 14Pins 74LSXX");
         test_74LSXX_14();
+      }
+      */
+
+      switch (IC_tested) {
+        case IC_74LS47:
+          Serial.println("******TESTING 16Pins 74LS47");
+          test_74LSXX_16();
+          break;
+        case IC_74LS48:
+          Serial.println("******TESTING 16Pins 74LS48");
+          test_74LSXX_16();
+          break;
+        case IC_74LS83:
+          Serial.println("******TESTING 74LS83");
+          test_74LS83();
+          break;
+        default:
+          test_74LSXX_14();
+          break;
       }
 
       ICtest_last_millis = millis();
@@ -137,10 +161,13 @@ void disp_74LSXX_exit() {
 
 void disp_74LSXX_INIT() {
   tft.Fill_Screen(BLACK);
+
   if (IC_tested == IC_74LS47 || IC_tested == IC_74LS48) {
     IC16_74LS4X_pinMode_init();
   } else if (IC_tested == IC_74LS04) {
     IC14_74LS04_pinMode_init();
+  } else if (IC_tested == IC_74LS83) {
+    IC16_74LS83_pinMode_init();
   } else {
     IC14_pinMode_init();
   }
@@ -171,6 +198,9 @@ void disp_74LSXX_INIT() {
       break;
     case IC_74LS86:
       display_TitleBar("Integrated Circuit TESTER", "74LS86- XOR Gate");
+      break;
+    case IC_74LS83:
+      display_TitleBar("Integrated Circuit TESTER", "74LS83-4-Bit Binary Adder with Fast Carry");
       break;
     case IC_74LS47:
       display_TitleBar("Integrated Circuit TESTER", "74LS47- CA BCD to 7-Segment Decoder");
