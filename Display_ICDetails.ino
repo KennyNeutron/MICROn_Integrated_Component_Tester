@@ -53,6 +53,9 @@ void disp_ICDetails() {
           case IC_74LS86:
             currentScreen = 0x1610;
             break;
+          case IC_74LS47:
+            currentScreen = 0x1810;
+            break;
           case IC_74LS48:
             currentScreen = 0x1910;
             break;
@@ -109,8 +112,12 @@ void disp_ICDetails_INIT() {
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS86 IC Details");
       ICDetails_74LS86();
       break;
+    case IC_74LS47:
+      //74LS47- BCD to 7Segement Decoder Common Anode
+      display_TitleBar("Integrared Circuit TESTER", "IC: 74LS47 IC Details");
+      break;
     case IC_74LS48:
-      //74LS48- BCD to 7Segment Common Cathode
+      //74LS48- BCD to 7Segment Decoder Common Cathode
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS48 IC Details");
       break;
   }

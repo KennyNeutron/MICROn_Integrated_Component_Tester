@@ -54,8 +54,11 @@ void disp_TruthTable() {
           case IC_74LS86:
             currentScreen = 0x1610;
             break;
+          case IC_74LS47:
+            currentScreen = 0x1810;
+            break;
           case IC_74LS48:
-            currentScreen= 0x1910;
+            currentScreen = 0x1910;
             break;
           default:
             currentScreen = 0x0000;
@@ -88,10 +91,10 @@ void disp_TruthTable_INIT() {
       disp_DrawTruthTable(320, 150, WHITE, BLUE, WHITE, "AND gate", 0, 0, 0, 1);
       break;
     case IC_74LS04:
+      //74LS04-NOT
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS04 TRUTH TABLE");
       disp_DrawTableNG(350, 200, RED, GREEN, BLUE, 0, 1, 0);
       break;
-
     case IC_74LS32:
       //74LS32-OR
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS32 TRUTH TABLE");
@@ -111,6 +114,10 @@ void disp_TruthTable_INIT() {
       //74LS86-XOR
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS86 TRUTH TABLE");
       disp_DrawTruthTable(320, 150, WHITE, BLUE, WHITE, "XOR gate", 0, 1, 1, 0);
+      break;
+    case IC_74LS47:
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS47 TRUTH TABLE");
+      disp_DrawTableBCD(180, 150, WHITE, RED, MAROON, 1, 79, 18, 6, 76, 36, 96, 15, 0, 12);
       break;
     case IC_74LS48:
       //74LS48- BCD Common Cathode

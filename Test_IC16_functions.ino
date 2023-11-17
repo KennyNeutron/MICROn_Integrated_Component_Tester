@@ -38,13 +38,13 @@ void IC16_74LS4X_pinMode_init() {
   pinMode(BCD_C, OUTPUT);
   pinMode(BCD_D, OUTPUT);
 
-  pinMode(BCD_outA, INPUT);
-  pinMode(BCD_outB, INPUT);
-  pinMode(BCD_outC, INPUT);
-  pinMode(BCD_outD, INPUT);
-  pinMode(BCD_outE, INPUT);
-  pinMode(BCD_outF, INPUT);
-  pinMode(BCD_outG, INPUT);
+  pinMode(BCD_outA, INPUT_PULLUP);
+  pinMode(BCD_outB, INPUT_PULLUP);
+  pinMode(BCD_outC, INPUT_PULLUP);
+  pinMode(BCD_outD, INPUT_PULLUP);
+  pinMode(BCD_outE, INPUT_PULLUP);
+  pinMode(BCD_outF, INPUT_PULLUP);
+  pinMode(BCD_outG, INPUT_PULLUP);
 
   pinMode(IC16_Pin8, OUTPUT);   //GND
   pinMode(IC16_Pin16, OUTPUT);  //VCC

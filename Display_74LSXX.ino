@@ -77,6 +77,9 @@ void disp_74LSXX() {
       case IC_74LS86:
         currentScreen = 0x1610;
         break;
+      case IC_74LS47:
+        currentScreen = 0x1810;
+        break;
       case IC_74LS48:
         currentScreen = 0x1910;
         break;
@@ -169,8 +172,11 @@ void disp_74LSXX_INIT() {
     case IC_74LS86:
       display_TitleBar("Integrated Circuit TESTER", "74LS86- XOR Gate");
       break;
+    case IC_74LS47:
+      display_TitleBar("Integrated Circuit TESTER", "74LS47- CA BCD to 7-Segment Decoder");
+      break;
     case IC_74LS48:
-      display_TitleBar("Integrated Circuit TESTER", "74LS48- CC Seven Segment Decoder");
+      display_TitleBar("Integrated Circuit TESTER", "74LS48- CC BCD to 7-Segment Decoder");
       break;
   }
 

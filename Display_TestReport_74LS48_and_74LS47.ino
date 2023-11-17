@@ -37,6 +37,9 @@ void disp_TestReport_74LS47_74LS48() {
     switch (btn_pressed) {
       case 255:
         switch (IC_tested) {
+          case IC_74LS47:
+            currentScreen = 0x1810;
+            break;
           case IC_74LS48:
             currentScreen = 0x1910;
             break;
@@ -77,7 +80,7 @@ void disp_TestReport_74LS47_74LS48_INIT() {
   disp_TestReport_74LS47_74LS48_init = true;
 
   bmp_file = SD.open(file_name[15]);
-  draw_bmp_picture(bmp_file, 55s0, 150);
+  draw_bmp_picture(bmp_file, 550, 150);
   bmp_file.close();
 
 }

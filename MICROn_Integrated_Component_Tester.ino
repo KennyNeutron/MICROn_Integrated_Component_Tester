@@ -229,6 +229,9 @@ void loop() {
     case 0x1610:
       disp_74LS86_TestResult();
       break;
+    case 0x1810:
+      disp_74LS47_TestResult();
+      break; 
     case 0x1910:
       disp_74LS48_TestResult();
       break;
