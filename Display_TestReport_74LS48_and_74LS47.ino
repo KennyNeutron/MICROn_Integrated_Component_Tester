@@ -53,7 +53,7 @@ void disp_TestReport_74LS47_74LS48() {
   }
 }
 
-void disp_TestReport_74LS47_74LS48_exit(){
+void disp_TestReport_74LS47_74LS48_exit() {
   btn_pressed = 0;
   disp_TestReport_74LS47_74LS48_init = false;
 }
@@ -82,7 +82,6 @@ void disp_TestReport_74LS47_74LS48_INIT() {
   bmp_file = SD.open(file_name[15]);
   draw_bmp_picture(bmp_file, 550, 150);
   bmp_file.close();
-
 }
 
 void disp_DrawTableBCD(uint16_t csrX, uint16_t csrY, uint16_t fontColor, uint16_t bgColor, uint16_t lineColor, uint8_t OData0, uint8_t OData1, uint8_t OData2, uint8_t OData3, uint8_t OData4, uint8_t OData5, uint8_t OData6, uint8_t OData7, uint8_t OData8, uint8_t OData9) {

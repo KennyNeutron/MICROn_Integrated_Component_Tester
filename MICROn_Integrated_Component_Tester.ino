@@ -92,7 +92,7 @@ uint32_t touch_last_millis = 0;
 uint32_t blink_last_millis = 0;
 bool blink = false;
 
-uint16_t currentScreen = 0x0000;
+uint16_t currentScreen = 0x1116;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -213,6 +213,9 @@ void loop() {
       break;
     case 0x1115:
       disp_TestReport_74LS47_74LS48();
+      break;
+    case 0x1116:
+      disp_TestReport_74LS83();
       break;
     case 0x1210:
       disp_74LS04_TestResult();
