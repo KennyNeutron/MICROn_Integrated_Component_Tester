@@ -76,7 +76,7 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define IC_NE555 0x0C    //NE555 :D
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 16
+#define FILE_NUMBER 17
 #define FILE_NAME_SIZE_MAX 20
 
 uint32_t bmp_offset = 0;
@@ -92,7 +92,7 @@ uint32_t touch_last_millis = 0;
 uint32_t blink_last_millis = 0;
 bool blink = false;
 
-uint16_t currentScreen = 0x1116;
+uint16_t currentScreen = 0x0000;
 uint8_t btn_pressed = 0;
 
 bool btn_Home_pressed = false;
@@ -120,7 +120,12 @@ bool errorNG6 = false;
 uint8_t IC_tested = 0x00;
 uint32_t ICtest_last_millis = 0;
 
+uint8_t Add_Sum[16]; //used for 74LS83 Sums
+
 uint8_t BCD_7Segment_Out[10];
+
+uint16_t previous_ScreenID =0;
+
 
 void setup() {
   Serial.begin(115200);
@@ -150,6 +155,7 @@ void setup() {
     strcpy(file_name[13], "BCDcc.bmp");
     strcpy(file_name[14], "BCDca.bmp");
     strcpy(file_name[15], "svnSeg.bmp");
+    strcpy(file_name[16], "BinADD.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
@@ -167,6 +173,7 @@ void setup() {
     strcpy(file_name[13], "BCDcc.bmp");
     strcpy(file_name[14], "BCDca.bmp");
     strcpy(file_name[15], "svnSeg.bmp");
+    strcpy(file_name[16], "BinADD.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
@@ -232,6 +239,9 @@ void loop() {
     case 0x1610:
       disp_74LS86_TestResult();
       break;
+    case 0x1710:
+      disp_74LS83_TestResult();
+      break;
     case 0x1810:
       disp_74LS47_TestResult();
       break; 
@@ -256,9 +266,18 @@ void loop() {
     touch_toggle = false;
   }
 
+  if(currentScreen != previous_ScreenID){
+    Serial.println("Current Screen:"+String(currentScreen,HEX));
+    previous_ScreenID = currentScreen;
+
+  }
+
   //Serial.print("CurrentScreen: ");
   //Serial.println(currentScreen, HEX);
 }
+
+//This is the function for printing any string on the TFT LCD ofcourse any string will disp_Home
+
 
 void show_string(String str, int16_t x, int16_t y, uint8_t csize, uint16_t fc, uint16_t bc, boolean mode) {
   tft.Set_Text_Mode(mode);

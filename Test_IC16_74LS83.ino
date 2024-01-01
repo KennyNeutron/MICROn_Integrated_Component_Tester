@@ -33,7 +33,7 @@ uint8_t Add_S2 = IC16_Pin6;
 uint8_t Add_S3 = IC16_Pin2;
 uint8_t Add_S4 = IC16_Pin15;
 
-uint8_t Add_Sum[16];
+
 
 
 
@@ -83,11 +83,11 @@ void test_74LS83() {
   Serial.println("test_74LS83 FUNCTION...");
 
   for (int i = 0; i <= 0x0F; i++) {
-    test_74LS83_WriteInput(i, i, false);
+    Add_Sum[i]=test_74LS83_WriteInput(i, i, false);
   }
 }
 
-void test_74LS83_WriteInput(uint8_t InputA, uint8_t InputB, bool InputCin) {
+uint8_t test_74LS83_WriteInput(uint8_t InputA, uint8_t InputB, bool InputCin) {
   Serial.print("Input A:");
   Serial.print(bitRead(InputA, 3));
   Serial.print(bitRead(InputA, 2));
@@ -133,4 +133,5 @@ void test_74LS83_WriteInput(uint8_t InputA, uint8_t InputB, bool InputCin) {
   }
 
   Serial.println("\t| A:" + String(InputA) + "  +  B:" + String(InputB) + "\tSUM:" + String(Summ));
+  return Summ;
 }

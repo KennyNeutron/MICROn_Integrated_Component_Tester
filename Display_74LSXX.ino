@@ -25,7 +25,6 @@ void disp_74LSXX() {
       touch_IsTouched();
     } else if (cx > 320 && cx < 475 && cy > 380 && cy < 430) {
       print_button_test_pressed();
-
       btn_testIC_pressed = true;
     }
   } else {
@@ -64,7 +63,7 @@ void disp_74LSXX() {
           break;
         case IC_74LS83:
           Serial.println("******TESTING 74LS83");
-          test_74LS83();
+          test_74LS83XX();
           break;
         default:
           test_74LSXX_14();
@@ -101,6 +100,9 @@ void disp_74LSXX() {
       case IC_74LS86:
         currentScreen = 0x1610;
         break;
+      case IC_74LS83:
+        currentScreen = 0x1710;
+        break;
       case IC_74LS47:
         currentScreen = 0x1810;
         break;
@@ -124,6 +126,12 @@ void disp_74LSXX() {
     }
     disp_74LSXX_exit();
   }
+}
+
+void test_74LS83XX() {
+  test_74LS83();
+  show_string("TESTING IC", CENTER, 210, 6, WHITE, BLACK, 0);
+  ICtest_74LSXX_started = true;
 }
 
 void test_74LSXX_14() {
