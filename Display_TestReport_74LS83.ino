@@ -7,6 +7,44 @@ void disp_TestReport_74LS83() {
   if (!disp_TestReport_74LS83_init) {
     disp_TestReport_74LS83_INIT();
   }
+
+  if (ts.touched()) {
+    TS_Point p = ts.getPoint();
+    long cx = map(p.x, 130, 4000, 0, 800);
+    long cy = map(p.y, 216, 3820, 0, 480);
+
+    if (cx > 10 && cx < 70 && cy > 10 && cy < 70) {
+      //Back Button
+      tft.Set_Draw_color(WHITE);
+      tft.Draw_Circle(40, 35, 35);
+
+      btn_Back_pressed = true;
+    }
+  } else {
+    if (btn_Back_pressed && !touch_toggle) {
+      //Back Button
+      tft.Set_Draw_color(BLACK);
+      tft.Draw_Circle(40, 35, 35);
+
+      btn_Back_pressed = false;
+      btn_pressed = 255;
+    }
+  }
+
+  //CONDITION based on the btn_pressed
+  if (!btn_Back_pressed && btn_pressed > 0) {
+    switch (btn_pressed) {
+      case 255:
+        currentScreen = 0x1710;
+        break;
+    }
+    disp_TestReport_74LS83_exit();
+  }
+}
+
+void disp_TestReport_74LS83_exit() {
+  btn_pressed = 0;
+  disp_TestReport_74LS83_init = false;
 }
 
 
@@ -25,38 +63,40 @@ void disp_TestReport_74LS83_INIT() {
   tft.Draw_Line(50, 55, 750, 55);
 
 
-  dispDrawTable_BinaryAdder(10, 95, WHITE, BLUE, WHITE, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30);
+  dispDrawTable_BinaryAdder(130, 95, WHITE, BLUE, WHITE, false, Add_Sum[0], Add_Sum[1], Add_Sum[2], Add_Sum[3], Add_Sum[4], Add_Sum[5], Add_Sum[6], Add_Sum[7], Add_Sum[8], Add_Sum[9], Add_Sum[10], Add_Sum[11], Add_Sum[12], Add_Sum[13], Add_Sum[14], Add_Sum[15]);
 
   disp_TestReport_74LS83_init = true;
 }
 
 
+//resultToDisplay 0==> Default 1==>get from Add_Sum
+void dispDrawTable_BinaryAdder(uint16_t csrX, uint16_t csrY, uint16_t fontColor, uint16_t bgColor, uint16_t lineColor, bool resultToDisplay, uint8_t Sum0, uint8_t Sum1, uint8_t Sum2, uint8_t Sum3, uint8_t Sum4, uint8_t Sum5, uint8_t Sum6, uint8_t Sum7, uint8_t Sum8, uint8_t Sum9, uint8_t SumA, uint8_t SumB, uint8_t SumC, uint8_t SumD, uint8_t SumE, uint8_t SumF) {
+  tft.Fill_Rect(csrX, csrY, 540, 380, bgColor);
 
-void dispDrawTable_BinaryAdder(uint16_t csrX, uint16_t csrY, uint16_t fontColor, uint16_t bgColor, uint16_t lineColor, uint8_t Sum0, uint8_t Sum1, uint8_t Sum2, uint8_t Sum3, uint8_t Sum4, uint8_t Sum5, uint8_t Sum6, uint8_t Sum7, uint8_t Sum8, uint8_t Sum9, uint8_t SumA, uint8_t SumB, uint8_t SumC, uint8_t SumD, uint8_t SumE, uint8_t SumF) {
-  tft.Set_Draw_color(bgColor);  //BG Color
-
+  tft.Set_Draw_color(bgColor);    //BG Color
   tft.Set_Draw_color(lineColor);  //Line Color
 
-  tft.Draw_Line(csrX, csrY, csrX + 500, csrY);              //H1
-  tft.Draw_Line(csrX, csrY + 20, csrX + 500, csrY + 20);    //H2
-  tft.Draw_Line(csrX, csrY + 40, csrX + 500, csrY + 40);    //H3
-  tft.Draw_Line(csrX, csrY + 60, csrX + 500, csrY + 60);    //H4
-  tft.Draw_Line(csrX, csrY + 80, csrX + 500, csrY + 80);    //H5
-  tft.Draw_Line(csrX, csrY + 100, csrX + 500, csrY + 100);  //H6
-  tft.Draw_Line(csrX, csrY + 120, csrX + 500, csrY + 120);  //H7
-  tft.Draw_Line(csrX, csrY + 140, csrX + 500, csrY + 140);  //H8
-  tft.Draw_Line(csrX, csrY + 160, csrX + 500, csrY + 160);  //H9
-  tft.Draw_Line(csrX, csrY + 180, csrX + 500, csrY + 180);  //H10
-  tft.Draw_Line(csrX, csrY + 200, csrX + 500, csrY + 200);  //H11
-  tft.Draw_Line(csrX, csrY + 220, csrX + 500, csrY + 220);  //H12
-  tft.Draw_Line(csrX, csrY + 240, csrX + 500, csrY + 240);  //H13
-  tft.Draw_Line(csrX, csrY + 260, csrX + 500, csrY + 260);  //H14
-  tft.Draw_Line(csrX, csrY + 280, csrX + 500, csrY + 280);  //H15
-  tft.Draw_Line(csrX, csrY + 300, csrX + 500, csrY + 300);  //H16
-  tft.Draw_Line(csrX, csrY + 320, csrX + 500, csrY + 320);  //H17
-  tft.Draw_Line(csrX, csrY + 340, csrX + 500, csrY + 340);  //H18
-  tft.Draw_Line(csrX, csrY + 360, csrX + 500, csrY + 360);  //H19
-  tft.Draw_Line(csrX, csrY + 380, csrX + 500, csrY + 380);  //H20
+
+  tft.Draw_Line(csrX, csrY, csrX + 540, csrY);              //H1
+  tft.Draw_Line(csrX, csrY + 20, csrX + 540, csrY + 20);    //H2
+  tft.Draw_Line(csrX, csrY + 40, csrX + 540, csrY + 40);    //H3
+  tft.Draw_Line(csrX, csrY + 60, csrX + 540, csrY + 60);    //H4
+  tft.Draw_Line(csrX, csrY + 80, csrX + 540, csrY + 80);    //H5
+  tft.Draw_Line(csrX, csrY + 100, csrX + 540, csrY + 100);  //H6
+  tft.Draw_Line(csrX, csrY + 120, csrX + 540, csrY + 120);  //H7
+  tft.Draw_Line(csrX, csrY + 140, csrX + 540, csrY + 140);  //H8
+  tft.Draw_Line(csrX, csrY + 160, csrX + 540, csrY + 160);  //H9
+  tft.Draw_Line(csrX, csrY + 180, csrX + 540, csrY + 180);  //H10
+  tft.Draw_Line(csrX, csrY + 200, csrX + 540, csrY + 200);  //H11
+  tft.Draw_Line(csrX, csrY + 220, csrX + 540, csrY + 220);  //H12
+  tft.Draw_Line(csrX, csrY + 240, csrX + 540, csrY + 240);  //H13
+  tft.Draw_Line(csrX, csrY + 260, csrX + 540, csrY + 260);  //H14
+  tft.Draw_Line(csrX, csrY + 280, csrX + 540, csrY + 280);  //H15
+  tft.Draw_Line(csrX, csrY + 300, csrX + 540, csrY + 300);  //H16
+  tft.Draw_Line(csrX, csrY + 320, csrX + 540, csrY + 320);  //H17
+  tft.Draw_Line(csrX, csrY + 340, csrX + 540, csrY + 340);  //H18
+  tft.Draw_Line(csrX, csrY + 360, csrX + 540, csrY + 360);  //H19
+  tft.Draw_Line(csrX, csrY + 380, csrX + 540, csrY + 380);  //H20
 
 
 
@@ -76,11 +116,15 @@ void dispDrawTable_BinaryAdder(uint16_t csrX, uint16_t csrY, uint16_t fontColor,
   tft.Draw_Line(csrX + 330, csrY + 40, csrX + 330, csrY + 380);  //V12
   tft.Draw_Line(csrX + 360, csrY + 20, csrX + 360, csrY + 380);  //V13
 
+  tft.Draw_Line(csrX + 420, csrY + 40, csrX + 420, csrY + 380);  //V14
+  tft.Draw_Line(csrX + 480, csrY + 40, csrX + 480, csrY + 380);  //V15
+  tft.Draw_Line(csrX + 540, csrY, csrX + 540, csrY + 380);       //V16
 
   show_string(" BINARY ", csrX + 130, csrY + 3, 2, fontColor, bgColor, 0);
   show_string(" INPUT A", csrX + 5, csrY + 23, 2, fontColor, bgColor, 0);
   show_string(" INPUT B", csrX + 125, csrY + 23, 2, fontColor, bgColor, 0);
   show_string("   SUM   ", csrX + 245, csrY + 23, 2, fontColor, bgColor, 0);
+  show_string("    DECIMAL   ", csrX + 365, csrY + 23, 2, fontColor, bgColor, 0);
 
   show_string("A4", csrX + 5, csrY + 43, 2, fontColor, bgColor, 0);
   show_string("A3", csrX + 35, csrY + 43, 2, fontColor, bgColor, 0);
@@ -96,6 +140,9 @@ void dispDrawTable_BinaryAdder(uint16_t csrX, uint16_t csrY, uint16_t fontColor,
   show_string("S3", csrX + 275, csrY + 43, 2, fontColor, bgColor, 0);
   show_string("S2", csrX + 305, csrY + 43, 2, fontColor, bgColor, 0);
   show_string("S1", csrX + 335, csrY + 43, 2, fontColor, bgColor, 0);
+  show_string("IN_A", csrX + 365, csrY + 43, 2, fontColor, bgColor, 0);
+  show_string("IN_B", csrX + 425, csrY + 43, 2, fontColor, bgColor, 0);
+  show_string("SUM", csrX + 485, csrY + 43, 2, fontColor, bgColor, 0);
 
   //INPUT A
   show_string(String(bitRead(0x00, 3)), csrX + 8, csrY + 63, 2, fontColor, bgColor, 0);   //0x00
@@ -339,4 +386,43 @@ void dispDrawTable_BinaryAdder(uint16_t csrX, uint16_t csrY, uint16_t fontColor,
   show_string(String(bitRead(SumF, 2)), csrX + 278, csrY + 363, 2, fontColor, bgColor, 0);  //SumF
   show_string(String(bitRead(SumF, 1)), csrX + 308, csrY + 363, 2, fontColor, bgColor, 0);  //SumF
   show_string(String(bitRead(SumF, 0)), csrX + 338, csrY + 363, 2, fontColor, bgColor, 0);  //SumF
+
+
+  //Decimal Input A
+  for (int a = 0; a < 16; a++) {
+    if (a < 10) {
+      show_string("0" + String(a), csrX + 370, csrY + 63 + (a * 20), 2, fontColor, bgColor, 0);
+    } else {
+      show_string(String(a), csrX + 370, csrY + 63 + (a * 20), 2, fontColor, bgColor, 0);
+    }
+  }
+
+  //Decimal Input B
+  for (int b = 0; b < 16; b++) {
+    if (b < 10) {
+      show_string("0" + String(b), csrX + 430, csrY + 63 + (b * 20), 2, fontColor, bgColor, 0);
+    } else {
+      show_string(String(b), csrX + 430, csrY + 63 + (b * 20), 2, fontColor, bgColor, 0);
+    }
+  }
+
+
+  //SUM
+  if (!resultToDisplay) {
+    for (int sumNum = 0; sumNum < 16; sumNum++) {
+      if ((sumNum * 2) < 10) {
+        show_string("0" + String(sumNum * 2), csrX + 490, csrY + 63 + (sumNum * 20), 2, fontColor, bgColor, 0);
+      } else {
+        show_string(String(sumNum * 2), csrX + 490, csrY + 63 + (sumNum * 20), 2, fontColor, bgColor, 0);
+      }
+    }
+  } else {
+    for (int sumNum = 0; sumNum < 16; sumNum++) {
+      if (Add_Sum[sumNum] < 10) {
+        show_string("0" + String(Add_Sum[sumNum]), csrX + 490, csrY + 63 + (sumNum * 20), 2, fontColor, bgColor, 0);
+      } else {
+        show_string(String(Add_Sum[sumNum]), csrX + 490, csrY + 63 + (sumNum * 20), 2, fontColor, bgColor, 0);
+      }
+    }
+  }
 }
