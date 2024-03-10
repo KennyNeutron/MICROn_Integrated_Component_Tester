@@ -316,6 +316,20 @@ void testTransistorParameters() {
     Serial.println("GAIN:" + String(GAIN));
     show_string("B= " + String(GAIN), 400, 220, 2, WHITE, WHITE, 0);
     show_string("Uf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
+    if (GAIN > 165 && GAIN < 175) {
+      //Serial.println("BROKEN OR NO TRANSISTOR");
+      tft.Fill_Screen(BLACK);
+
+      File bmp_file;
+      bmp_file = SD.open(file_name[0]);
+      draw_bmp_picture(bmp_file, 10, 10);
+      bmp_file.close();
+
+      display_TitleBar("Transistor TESTER", " ");
+
+      show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
+    }
+
   } else if (transistor_isPNP) {
     Serial.println("TESTING PNP.........");
 
@@ -373,6 +387,20 @@ void testTransistorParameters() {
 
     show_string("B= " + String(GAIN), 400, 220, 2, WHITE, WHITE, 0);
     show_string("Uf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
+
+    if (GAIN > 165 && GAIN < 175) {
+      //Serial.println("BROKEN OR NO TRANSISTOR");
+      tft.Fill_Screen(BLACK);
+
+      File bmp_file;
+      bmp_file = SD.open(file_name[0]);
+      draw_bmp_picture(bmp_file, 10, 10);
+      bmp_file.close();
+
+      display_TitleBar("Transistor TESTER", " ");
+
+      show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
+    }
   }
   Serial.println("=============================================");
 }

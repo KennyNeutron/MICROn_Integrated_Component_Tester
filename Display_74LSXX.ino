@@ -56,10 +56,12 @@ void disp_74LSXX() {
         case IC_74LS47:
           Serial.println("******TESTING 16Pins 74LS47");
           test_74LSXX_16();
+          IC_tested = IC_74LS47;
           break;
         case IC_74LS48:
           Serial.println("******TESTING 16Pins 74LS48");
           test_74LSXX_16();
+          IC_tested = IC_74LS48;
           break;
         case IC_74LS83:
           Serial.println("******TESTING 74LS83");
@@ -81,6 +83,8 @@ void disp_74LSXX() {
   }
 
   if (ICtest_74LSXX_started && ICtest_74LSXX_done && (millis() - ICtest_last_millis) > 2000) {
+    Serial.println("FLAG!\nIC tested:");
+    Serial.println(IC_tested);
     switch (IC_tested) {
       case IC_74LS08:
         currentScreen = 0x1110;

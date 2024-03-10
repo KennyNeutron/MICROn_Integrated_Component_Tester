@@ -57,6 +57,9 @@ void disp_TruthTable() {
           case IC_74LS47:
             currentScreen = 0x1810;
             break;
+          case IC_74LS83:
+            currentScreen = 0x1710;
+            break;
           case IC_74LS48:
             currentScreen = 0x1910;
             break;
@@ -123,6 +126,14 @@ void disp_TruthTable_INIT() {
       //74LS48- BCD Common Cathode
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS48 TRUTH TABLE");
       disp_DrawTableBCD(180, 150, WHITE, RED, MAROON, 126, 48, 109, 121, 51, 91, 31, 112, 127, 115);
+      break;
+    case IC_74LS83:
+      //74LS83 Binary Full Adder
+      show_string("Integrated Circuit TESTER", CENTER, 10, 4, WHITE, WHITE, 0);
+      show_string("IC : 74LS83 TRUTH TABLE", CENTER, 60, 3, WHITE, WHITE, 0);
+      tft.Set_Draw_color(RED);
+      tft.Draw_Line(50, 50, 750, 50);
+      dispDrawTable_BinaryAdder(130, 95, WHITE, BLUE, WHITE, false, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30);
       break;
   }
 

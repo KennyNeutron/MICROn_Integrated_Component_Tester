@@ -1,7 +1,0 @@
-{
-    "configuration": "cpu=atmega2560",
-    "board": "arduino:avr:mega",
-    "sketch": "MICROn_Integrated_Component_Tester.ino",
-    "programmer": "arduino:avrisp",
-    "port": "COM14"
-}

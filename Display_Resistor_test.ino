@@ -56,8 +56,8 @@ void disp_Resistor_test() {
 
 void test_resistor() {
   float R1 = 0;
-  float R2 = 10000;
-  float Vi = 5.02;
+  float R2 = 9900;
+  float Vi = 5.01;
   int analogValue = analogRead(resistor_read_pin);
   float Vo = analogValue * (Vi / 1023.0);
 
@@ -87,7 +87,7 @@ void disp_Resistor_test_exit() {
 
 void disp_Resistor_test_init() {
   pinMode(resistor_read_pin, INPUT);
-  analogReference(EXTERNAL);
+  //analogReference(EXTERNAL);
 
   tft.Fill_Screen(BLACK);
 

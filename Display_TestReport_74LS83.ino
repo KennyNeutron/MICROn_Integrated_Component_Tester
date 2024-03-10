@@ -63,7 +63,7 @@ void disp_TestReport_74LS83_INIT() {
   tft.Draw_Line(50, 55, 750, 55);
 
 
-  dispDrawTable_BinaryAdder(130, 95, WHITE, BLUE, WHITE, false, Add_Sum[0], Add_Sum[1], Add_Sum[2], Add_Sum[3], Add_Sum[4], Add_Sum[5], Add_Sum[6], Add_Sum[7], Add_Sum[8], Add_Sum[9], Add_Sum[10], Add_Sum[11], Add_Sum[12], Add_Sum[13], Add_Sum[14], Add_Sum[15]);
+  dispDrawTable_BinaryAdder(130, 95, WHITE, BLUE, WHITE, true, Add_Sum[0], Add_Sum[1], Add_Sum[2], Add_Sum[3], Add_Sum[4], Add_Sum[5], Add_Sum[6], Add_Sum[7], Add_Sum[8], Add_Sum[9], Add_Sum[10], Add_Sum[11], Add_Sum[12], Add_Sum[13], Add_Sum[14], Add_Sum[15]);
 
   disp_TestReport_74LS83_init = true;
 }
