@@ -1,3 +1,4 @@
+
 /*
     Electronic Component Tester on TFT Display
     Main Code
@@ -124,7 +125,7 @@ uint8_t Add_Sum[16]; //used for 74LS83 Sums
 
 uint8_t BCD_7Segment_Out[10];
 
-uint16_t previous_ScreenID =0;
+uint16_t previous_ScreenID = 0;
 
 
 void setup() {
@@ -189,8 +190,8 @@ void setup() {
   //tft.Fill_Screen(GREEN);
   //tft.Fill_Screen(BLUE);
 
-  //disp_LoadingScreen();
-  //delay(2000);
+  disp_LoadingScreen();
+  delay(2000);
   tft.Fill_Screen(BLACK);
 }
 
@@ -244,7 +245,7 @@ void loop() {
       break;
     case 0x1810:
       disp_74LS47_TestResult();
-      break; 
+      break;
     case 0x1910:
       disp_74LS48_TestResult();
       break;
@@ -266,8 +267,8 @@ void loop() {
     touch_toggle = false;
   }
 
-  if(currentScreen != previous_ScreenID){
-    Serial.println("Current Screen:"+String(currentScreen,HEX));
+  if (currentScreen != previous_ScreenID) {
+    Serial.println("Current Screen:" + String(currentScreen, HEX));
     previous_ScreenID = currentScreen;
 
   }

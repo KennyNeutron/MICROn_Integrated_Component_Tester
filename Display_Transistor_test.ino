@@ -246,12 +246,12 @@ TransistorTest_InitExit:
 
 void testTransistorParameters() {
   /*
-  pinMode(tPin1, INPUT);
-  pinMode(tPin2, INPUT);
-  pinMode(tPin3, OUTPUT);
-  pinMode(tPin1_res, INPUT);
-  pinMode(tPin2_res, OUTPUT);
-  pinMode(tPin2_res, INPUT);
+    pinMode(tPin1, INPUT);
+    pinMode(tPin2, INPUT);
+    pinMode(tPin3, OUTPUT);
+    pinMode(tPin1_res, INPUT);
+    pinMode(tPin2_res, OUTPUT);
+    pinMode(tPin2_res, INPUT);
   */
 
   Serial.println("=============================================");
@@ -328,6 +328,8 @@ void testTransistorParameters() {
       display_TitleBar("Transistor TESTER", " ");
 
       show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
+
+      print_button_test();
     }
 
   } else if (transistor_isPNP) {
@@ -400,6 +402,8 @@ void testTransistorParameters() {
       display_TitleBar("Transistor TESTER", " ");
 
       show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
+
+      print_button_test();
     }
   }
   Serial.println("=============================================");
