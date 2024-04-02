@@ -115,10 +115,16 @@ void disp_ICDetails_INIT() {
     case IC_74LS47:
       //74LS47- BCD to 7Segement Decoder Common Anode
       display_TitleBar("Integrared Circuit TESTER", "IC: 74LS47 IC Details");
+      ICDetails_74LS47();
       break;
     case IC_74LS48:
       //74LS48- BCD to 7Segment Decoder Common Cathode
       display_TitleBar("Integrated Circuit TESTER", "IC: 74LS48 IC Details");
+      ICDetails_74LS48();
+      break;
+    case IC_74LS83:
+      display_TitleBar("Integrated Circuit TESTER", "IC: 74LS83 IC Details");
+      ICDetails_74LS83();
       break;
   }
 
@@ -128,6 +134,10 @@ void disp_ICDetails_INIT() {
 
 void ICDetails_74LS08() {
   //show_string("The 74LS08 is a quad 2-input AND gate\nintegrated circuit. It has four separate AND\ngates that perform logical AND operations on\ntwo binary inputs, producing a binary output \nbased on the inputs' logical states.", 0, 150, 3, WHITE, WHITE, 0);
+  File bmp_file;
+  bmp_file = SD.open(file_name[17]);
+  draw_bmp_picture(bmp_file, 100, 150);
+  bmp_file.close();
 }
 
 void ICDetails_74LS04() {
@@ -140,12 +150,16 @@ void ICDetails_74LS04() {
 
 void ICDetails_74LS32() {
   //show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
+  File bmp_file;
+  bmp_file = SD.open(file_name[20]);
+  draw_bmp_picture(bmp_file, 100, 150);
+  bmp_file.close();
 }
 
 void ICDetails_74LS00() {
   //show_string("The 74LS00 is a quad 2-input NAND gate\nintegrated circuit. It contains four\nseparate NAND gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
   File bmp_file;
-  bmp_file = SD.open(file_name[17]);
+  bmp_file = SD.open(file_name[21]);
   draw_bmp_picture(bmp_file, 100, 150);
   bmp_file.close();
 }
@@ -160,4 +174,32 @@ void ICDetails_74LS02() {
 
 void ICDetails_74LS86() {
   //show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins.", 0, 150, 3, WHITE, WHITE, 0);
+  File bmp_file;
+  bmp_file = SD.open(file_name[22]);
+  draw_bmp_picture(bmp_file, 100, 150);
+  bmp_file.close();
+}
+
+void ICDetails_74LS83() {
+  //ADDER
+  File bmp_file;
+  bmp_file = SD.open(file_name[23]);
+  draw_bmp_picture(bmp_file, 100, 150);
+  bmp_file.close();
+}
+
+void ICDetails_74LS47() {
+  //BCD CA
+  File bmp_file;
+  bmp_file = SD.open(file_name[24]);
+  draw_bmp_picture(bmp_file, 100, 150);
+  bmp_file.close();
+}
+
+void ICDetails_74LS48() {
+  //BCD CC
+  File bmp_file;
+  bmp_file = SD.open(file_name[25]);
+  draw_bmp_picture(bmp_file, 100, 150);
+  bmp_file.close();
 }

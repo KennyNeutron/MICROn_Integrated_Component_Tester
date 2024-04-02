@@ -77,8 +77,8 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define IC_NE555 0x0C    //NE555 :D
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 20
-#define FILE_NAME_SIZE_MAX 23
+#define FILE_NUMBER 26
+#define FILE_NAME_SIZE_MAX 29
 
 uint32_t bmp_offset = 0;
 uint16_t s_width = tft.Get_Display_Width();
@@ -121,7 +121,7 @@ bool errorNG6 = false;
 uint8_t IC_tested = 0x00;
 uint32_t ICtest_last_millis = 0;
 
-uint8_t Add_Sum[16];  //used for 74LS83 Sums
+uint8_t Add_Sum[16]; //used for 74LS83 Sums
 
 uint8_t BCD_7Segment_Out[10];
 
@@ -160,6 +160,12 @@ void setup() {
     strcpy(file_name[17], "ICDand.bmp");
     strcpy(file_name[18], "ICDnor.bmp");
     strcpy(file_name[19], "ICDnot.bmp");
+    strcpy(file_name[20], "ICDor.bmp");
+    strcpy(file_name[21], "ICDnand.bmp");
+    strcpy(file_name[22], "ICDxor.bmp");
+    strcpy(file_name[23], "ICDadder.bmp");
+    strcpy(file_name[24], "ICDbcdA.bmp");
+    strcpy(file_name[25], "ICDbcdC.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
@@ -181,6 +187,12 @@ void setup() {
     strcpy(file_name[17], "ICDand.bmp");
     strcpy(file_name[18], "ICDnor.bmp");
     strcpy(file_name[19], "ICDnot.bmp");
+    strcpy(file_name[20], "ICDor.bmp");
+    strcpy(file_name[21], "ICDnand.bmp");
+    strcpy(file_name[22], "ICDxor.bmp");
+    strcpy(file_name[23], "ICDadder.bmp");
+    strcpy(file_name[24], "ICDbcdA.bmp");
+    strcpy(file_name[25], "ICDbcdC.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
@@ -196,8 +208,8 @@ void setup() {
   //tft.Fill_Screen(GREEN);
   //tft.Fill_Screen(BLUE);
 
-  disp_LoadingScreen();
-  delay(2000);
+  //disp_LoadingScreen();
+  //delay(2000);
   //tft.Fill_Screen(BLACK);
 }
 
@@ -276,6 +288,7 @@ void loop() {
   if (currentScreen != previous_ScreenID) {
     Serial.println("Current Screen:" + String(currentScreen, HEX));
     previous_ScreenID = currentScreen;
+
   }
 
   //Serial.print("CurrentScreen: ");
