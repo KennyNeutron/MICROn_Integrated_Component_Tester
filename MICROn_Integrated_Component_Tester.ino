@@ -77,8 +77,8 @@ LCDWIKI_KBV tft(NT35510, 40, 38, 39, 43, 41);  //model,cs,cd,wr,rd,reset
 #define IC_NE555 0x0C    //NE555 :D
 
 //#define PIXEL_NUMBER  (tft.Get_Display_Width()/4)
-#define FILE_NUMBER 26
-#define FILE_NAME_SIZE_MAX 29
+#define FILE_NUMBER 17
+#define FILE_NAME_SIZE_MAX 20
 
 uint32_t bmp_offset = 0;
 uint16_t s_width = tft.Get_Display_Width();
@@ -157,9 +157,6 @@ void setup() {
     strcpy(file_name[14], "BCDca.bmp");
     strcpy(file_name[15], "svnSeg.bmp");
     strcpy(file_name[16], "BinADD.bmp");
-    strcpy(file_name[17], "ICDand.bmp");
-    strcpy(file_name[18], "ICDnot.bmp");
-    strcpy(file_name[19], "ICDor.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
@@ -178,9 +175,6 @@ void setup() {
     strcpy(file_name[14], "BCDca.bmp");
     strcpy(file_name[15], "svnSeg.bmp");
     strcpy(file_name[16], "BinADD.bmp");
-    strcpy(file_name[17], "ICDand.bmp");
-    strcpy(file_name[18], "ICDnot.bmp");
-    strcpy(file_name[19], "ICDor.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
