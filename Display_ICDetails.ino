@@ -143,7 +143,7 @@ void ICDetails_74LS08() {
 void ICDetails_74LS04() {
   //show_string("The 74LS04 is a hex inverter integrated\ncircuit. It contains six individual\ninverters, each taking a single input\nsignal and producing the logical\ncomplement of that signal as the\noutput.", 0, 150, 3, WHITE, WHITE, 0);
   File bmp_file;
-  bmp_file = SD.open(file_name[19]);
+  bmp_file = SD.open(file_name[18]);
   draw_bmp_picture(bmp_file, 100, 150);
   bmp_file.close();
 }
@@ -151,55 +151,31 @@ void ICDetails_74LS04() {
 void ICDetails_74LS32() {
   //show_string("The 74LS32 is a quad 2-input OR gate\nintegrated circuit. It contains four\nindependent OR gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
   File bmp_file;
-  bmp_file = SD.open(file_name[20]);
+  bmp_file = SD.open(file_name[19]);
   draw_bmp_picture(bmp_file, 100, 150);
   bmp_file.close();
 }
 
 void ICDetails_74LS00() {
   //show_string("The 74LS00 is a quad 2-input NAND gate\nintegrated circuit. It contains four\nseparate NAND gates, each with two input\npins.", 0, 150, 3, WHITE, WHITE, 0);
-  File bmp_file;
-  bmp_file = SD.open(file_name[21]);
-  draw_bmp_picture(bmp_file, 100, 150);
-  bmp_file.close();
 }
 
 void ICDetails_74LS02() {
   //show_string("The 74LS02 is a quad 2-input NOR gate\nintegrated circuit. It includes four\nindependent NOR gates, each with two\ninput pins. ", 0, 150, 3, WHITE, WHITE, 0);
-  File bmp_file;
-  bmp_file = SD.open(file_name[18]);
-  draw_bmp_picture(bmp_file, 100, 150);
-  bmp_file.close();
 }
 
 void ICDetails_74LS86() {
   //show_string("The 74LS86 is a quad 2-input XOR gate\nintegrated circuit. It features four\nseparate XOR gates, each with two\ninput pins.", 0, 150, 3, WHITE, WHITE, 0);
-  File bmp_file;
-  bmp_file = SD.open(file_name[22]);
-  draw_bmp_picture(bmp_file, 100, 150);
-  bmp_file.close();
 }
 
 void ICDetails_74LS83() {
   //ADDER
-  File bmp_file;
-  bmp_file = SD.open(file_name[23]);
-  draw_bmp_picture(bmp_file, 100, 150);
-  bmp_file.close();
 }
 
 void ICDetails_74LS47() {
   //BCD CA
-  File bmp_file;
-  bmp_file = SD.open(file_name[24]);
-  draw_bmp_picture(bmp_file, 100, 150);
-  bmp_file.close();
 }
 
 void ICDetails_74LS48() {
   //BCD CC
-  File bmp_file;
-  bmp_file = SD.open(file_name[25]);
-  draw_bmp_picture(bmp_file, 100, 150);
-  bmp_file.close();
 }

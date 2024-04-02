@@ -158,14 +158,8 @@ void setup() {
     strcpy(file_name[15], "svnSeg.bmp");
     strcpy(file_name[16], "BinADD.bmp");
     strcpy(file_name[17], "ICDand.bmp");
-    // strcpy(file_name[18], "ICDnor.bmp");
-    // strcpy(file_name[19], "ICDnot.bmp");
-    // strcpy(file_name[20], "ICDor.bmp");
-    // strcpy(file_name[21], "ICDnand.bmp");
-    // strcpy(file_name[22], "ICDxor.bmp");
-    // strcpy(file_name[23], "ICDadder.bmp");
-    // strcpy(file_name[24], "ICDbcdA.bmp");
-    // strcpy(file_name[25], "ICDbcdC.bmp");
+    strcpy(file_name[18], "ICDnot.bmp");
+    strcpy(file_name[19], "ICDor.bmp");
   } else {
     strcpy(file_name[0], "BHome.bmp");
     strcpy(file_name[1], "IconRes.bmp");
@@ -185,14 +179,8 @@ void setup() {
     strcpy(file_name[15], "svnSeg.bmp");
     strcpy(file_name[16], "BinADD.bmp");
     strcpy(file_name[17], "ICDand.bmp");
-    // strcpy(file_name[18], "ICDnor.bmp");
-    // strcpy(file_name[19], "ICDnot.bmp");
-    // strcpy(file_name[20], "ICDor.bmp");
-    // strcpy(file_name[21], "ICDnand.bmp");
-    // strcpy(file_name[22], "ICDxor.bmp");
-    // strcpy(file_name[23], "ICDadder.bmp");
-    // strcpy(file_name[24], "ICDbcdA.bmp");
-    // strcpy(file_name[25], "ICDbcdC.bmp");
+    strcpy(file_name[18], "ICDnot.bmp");
+    strcpy(file_name[19], "ICDor.bmp");
   }
   //Init SD_Card
   pinMode(48, OUTPUT);
