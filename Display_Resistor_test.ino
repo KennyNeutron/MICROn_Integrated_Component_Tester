@@ -68,7 +68,7 @@ void test_resistor() {
   Serial.print("Voltage at A0:");
   Serial.println(Vo);
 
-  int disp_resistance = R1;
+  float disp_resistance = R1;
   Serial.print("Resistance:");
   Serial.println(disp_resistance);
 

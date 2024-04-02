@@ -129,37 +129,38 @@ void disp_IC_select() {
 
       btn_74LS48_pressed = true;
       touch_IsTouched();
-    } else if (cx > 45 && cx < 200 && cy > 380 && cy < 430) {
-      //74LS147 Button
-      tft.Set_Draw_color(BLUE);
-      tft.Fill_Round_Rectangle(45, 380, 200, 430, 9);
-      tft.Set_Draw_color(WHITE);
-      tft.Draw_Round_Rectangle(45, 380, 200, 430, 9);
-      show_string("74LS147", 65, 395, 3, WHITE, BLUE, 0);
-
-      btn_74LS147_pressed = true;
-      touch_IsTouched();
-    } else if (cx > 320 && cx < 475 && cy > 380 && cy < 430) {
-      //74LS42 Button
-      tft.Set_Draw_color(BLUE);
-      tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
-      tft.Set_Draw_color(WHITE);
-      tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
-      show_string("74LS42", CENTER, 390, 4, WHITE, BLUE, 0);
-
-      btn_74LS42_pressed = true;
-      touch_IsTouched();
-    } else if (cx > 590 && cx < 745 && cy > 380 && cy < 430) {
-      //NE555 Button
-      tft.Set_Draw_color(BLUE);
-      tft.Fill_Round_Rectangle(590, 380, 745, 430, 9);
-      tft.Set_Draw_color(WHITE);
-      tft.Draw_Round_Rectangle(590, 380, 745, 430, 9);
-      show_string("NE555", 610, 390, 4, WHITE, BLUE, 0);
-
-      btn_NE555_pressed = true;
-      touch_IsTouched();
     }
+    //    else if (cx > 45 && cx < 200 && cy > 380 && cy < 430) {
+    //      //74LS147 Button
+    //      tft.Set_Draw_color(BLUE);
+    //      tft.Fill_Round_Rectangle(45, 380, 200, 430, 9);
+    //      tft.Set_Draw_color(WHITE);
+    //      tft.Draw_Round_Rectangle(45, 380, 200, 430, 9);
+    //      show_string("74LS147", 65, 395, 3, WHITE, BLUE, 0);
+    //
+    //      btn_74LS147_pressed = true;
+    //      touch_IsTouched();
+    //    } else if (cx > 320 && cx < 475 && cy > 380 && cy < 430) {
+    //      //74LS42 Button
+    //      tft.Set_Draw_color(BLUE);
+    //      tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
+    //      tft.Set_Draw_color(WHITE);
+    //      tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
+    //      show_string("74LS42", CENTER, 390, 4, WHITE, BLUE, 0);
+    //
+    //      btn_74LS42_pressed = true;
+    //      touch_IsTouched();
+    //    } else if (cx > 590 && cx < 745 && cy > 380 && cy < 430) {
+    //      //NE555 Button
+    //      tft.Set_Draw_color(BLUE);
+    //      tft.Fill_Round_Rectangle(590, 380, 745, 430, 9);
+    //      tft.Set_Draw_color(WHITE);
+    //      tft.Draw_Round_Rectangle(590, 380, 745, 430, 9);
+    //      show_string("NE555", 610, 390, 4, WHITE, BLUE, 0);
+    //
+    //      btn_NE555_pressed = true;
+    //      touch_IsTouched();
+    //    }
   } else {
     if (btn_Home_pressed && !touch_toggle) {
       //Home Button
@@ -242,7 +243,7 @@ void disp_IC_select() {
       show_string("74LS83", 50, 310, 4, BLACK, GREEN, 0);
 
       btn_74LS83_pressed = false;
-      btn_pressed=7;
+      btn_pressed = 7;
       IC_tested = IC_74LS83;
     } else if (btn_74LS47_pressed && !touch_toggle) {
       //74LS47 Button
@@ -253,8 +254,8 @@ void disp_IC_select() {
       show_string("74LS47", CENTER, 310, 4, BLACK, GREEN, 0);
 
       btn_74LS47_pressed = false;
-      btn_pressed=8;
-      IC_tested=IC_74LS47;
+      btn_pressed = 8;
+      IC_tested = IC_74LS47;
     } else if (btn_74LS48_pressed && !touch_toggle) {
       //74LS48 Button
       tft.Set_Draw_color(GREEN);
@@ -265,36 +266,36 @@ void disp_IC_select() {
 
       btn_74LS48_pressed = false;
       btn_pressed = 9;
-      IC_tested = IC_74LS48;   
-    }   
-//     else if (btn_74LS147_pressed && !touch_toggle) {
-//      //74LS147 Button
-//      tft.Set_Draw_color(GREEN);
-//      tft.Fill_Round_Rectangle(45, 380, 200, 430, 9);
-//      tft.Set_Draw_color(WHITE);
-//      tft.Draw_Round_Rectangle(45, 380, 200, 430, 9);
-//      show_string("74LS147", 65, 395, 3, BLACK, GREEN, 0);
-//
-//      btn_74LS147_pressed = false;
-//    } else if (btn_74LS42_pressed && !touch_toggle) {
-//      //74LS42 Button
-//      tft.Set_Draw_color(GREEN);
-//      tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
-//      tft.Set_Draw_color(WHITE);
-//      tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
-//      show_string("74LS42", CENTER, 390, 4, BLACK, GREEN, 0);
-//
-//      btn_74LS42_pressed = false;
-//    } else if (btn_NE555_pressed && !touch_toggle) {
-//      //NE555 Button
-//      tft.Set_Draw_color(GREEN);
-//      tft.Fill_Round_Rectangle(590, 380, 745, 430, 9);
-//      tft.Set_Draw_color(WHITE);
-//      tft.Draw_Round_Rectangle(590, 380, 745, 430, 9);
-//      show_string("NE555", 610, 390, 4, BLACK, GREEN, 0);
-//
-//      btn_NE555_pressed = false;
-//    }
+      IC_tested = IC_74LS48;
+    }
+    //     else if (btn_74LS147_pressed && !touch_toggle) {
+    //      //74LS147 Button
+    //      tft.Set_Draw_color(GREEN);
+    //      tft.Fill_Round_Rectangle(45, 380, 200, 430, 9);
+    //      tft.Set_Draw_color(WHITE);
+    //      tft.Draw_Round_Rectangle(45, 380, 200, 430, 9);
+    //      show_string("74LS147", 65, 395, 3, BLACK, GREEN, 0);
+    //
+    //      btn_74LS147_pressed = false;
+    //    } else if (btn_74LS42_pressed && !touch_toggle) {
+    //      //74LS42 Button
+    //      tft.Set_Draw_color(GREEN);
+    //      tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
+    //      tft.Set_Draw_color(WHITE);
+    //      tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
+    //      show_string("74LS42", CENTER, 390, 4, BLACK, GREEN, 0);
+    //
+    //      btn_74LS42_pressed = false;
+    //    } else if (btn_NE555_pressed && !touch_toggle) {
+    //      //NE555 Button
+    //      tft.Set_Draw_color(GREEN);
+    //      tft.Fill_Round_Rectangle(590, 380, 745, 430, 9);
+    //      tft.Set_Draw_color(WHITE);
+    //      tft.Draw_Round_Rectangle(590, 380, 745, 430, 9);
+    //      show_string("NE555", 610, 390, 4, BLACK, GREEN, 0);
+    //
+    //      btn_NE555_pressed = false;
+    //    }
   }
 
   //CONDITION based on the btn_pressed
@@ -418,25 +419,25 @@ void disp_IC_select_init() {
   show_string("74LS48", 600, 310, 4, BLACK, GREEN, 0);
   //====================================================
 
-//  //=========== ROW 4 ==================================
-//  tft.Set_Draw_color(GREEN);
-//  tft.Fill_Round_Rectangle(45, 380, 200, 430, 9);
-//  tft.Set_Draw_color(WHITE);
-//  tft.Draw_Round_Rectangle(45, 380, 200, 430, 9);
-//  show_string("74LS147", 65, 395, 3, BLACK, GREEN, 0);
-//
-//  tft.Set_Draw_color(GREEN);
-//  tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
-//  tft.Set_Draw_color(WHITE);
-//  tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
-//  show_string("74LS42", CENTER, 390, 4, BLACK, GREEN, 0);
-//
-//  tft.Set_Draw_color(GREEN);
-//  tft.Fill_Round_Rectangle(590, 380, 745, 430, 9);
-//  tft.Set_Draw_color(WHITE);
-//  tft.Draw_Round_Rectangle(590, 380, 745, 430, 9);
-//  show_string("NE555", 610, 390, 4, BLACK, GREEN, 0);
-//  //====================================================
+  //  //=========== ROW 4 ==================================
+  //  tft.Set_Draw_color(GREEN);
+  //  tft.Fill_Round_Rectangle(45, 380, 200, 430, 9);
+  //  tft.Set_Draw_color(WHITE);
+  //  tft.Draw_Round_Rectangle(45, 380, 200, 430, 9);
+  //  show_string("74LS147", 65, 395, 3, BLACK, GREEN, 0);
+  //
+  //  tft.Set_Draw_color(GREEN);
+  //  tft.Fill_Round_Rectangle(320, 380, 475, 430, 9);
+  //  tft.Set_Draw_color(WHITE);
+  //  tft.Draw_Round_Rectangle(320, 380, 475, 430, 9);
+  //  show_string("74LS42", CENTER, 390, 4, BLACK, GREEN, 0);
+  //
+  //  tft.Set_Draw_color(GREEN);
+  //  tft.Fill_Round_Rectangle(590, 380, 745, 430, 9);
+  //  tft.Set_Draw_color(WHITE);
+  //  tft.Draw_Round_Rectangle(590, 380, 745, 430, 9);
+  //  show_string("NE555", 610, 390, 4, BLACK, GREEN, 0);
+  //  //====================================================
 
 
 
