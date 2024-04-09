@@ -330,6 +330,20 @@ void testTransistorParameters() {
       show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
 
       print_button_test();
+    } else if (Uf == 500.00 || Uf == 292.77) {
+      //Serial.println("BROKEN OR NO TRANSISTOR");
+      tft.Fill_Screen(BLACK);
+
+      File bmp_file;
+      bmp_file = SD.open(file_name[0]);
+      draw_bmp_picture(bmp_file, 10, 10);
+      bmp_file.close();
+
+      display_TitleBar("Transistor TESTER", " ");
+
+      show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
+
+      print_button_test();
     }
 
   } else if (transistor_isPNP) {
@@ -391,6 +405,20 @@ void testTransistorParameters() {
     show_string("Uf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
 
     if (GAIN > 165 && GAIN < 175) {
+      //Serial.println("BROKEN OR NO TRANSISTOR");
+      tft.Fill_Screen(BLACK);
+
+      File bmp_file;
+      bmp_file = SD.open(file_name[0]);
+      draw_bmp_picture(bmp_file, 10, 10);
+      bmp_file.close();
+
+      display_TitleBar("Transistor TESTER", " ");
+
+      show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
+
+      print_button_test();
+    } else if (Uf == 500.00 || Uf == 292.77) {
       //Serial.println("BROKEN OR NO TRANSISTOR");
       tft.Fill_Screen(BLACK);
 
