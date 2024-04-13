@@ -292,9 +292,9 @@ void testTransistorParameters() {
 
     unsigned int AnalogBase = analogRead(tPin2);
     Serial.println("\Base Analog: " + String(AnalogBase));
-    float Uf = (AnalogBase / 204.6) * 100;
+    float Uf = (AnalogBase / 204.6) * 1000;
     float BaseCurrent = (Uf * 1000) / baseResistor;
-    Serial.println("Uf= " + String(Uf) + "mV");
+    Serial.println("Vf= " + String(Uf) + "mV");
     Serial.println("Base Current:" + String(BaseCurrent) + "mA");
 
     pinMode(tPin2, OUTPUT);
@@ -313,9 +313,9 @@ void testTransistorParameters() {
     //float LeakageCurrentC = LeakageVoltageC / collectorResistor;
     //Serial.println("Leakage Current:" + String(LeakageCurrentC) + "mA");
     unsigned int GAIN = (LeakageVoltageC * 1000) / collectorResistor / (BaseCurrent / 1000);
-    Serial.println("GAIN:" + String(GAIN));
-    show_string("B= " + String(GAIN), 400, 220, 2, WHITE, WHITE, 0);
-    show_string("Uf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
+    Serial.println("GAIN:" + String(GAIN - 150));
+    show_string("B= " + String(GAIN - 150), 400, 220, 2, WHITE, WHITE, 0);
+    show_string("Vf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
     if (GAIN > 165 && GAIN < 175) {
       //Serial.println("BROKEN OR NO TRANSISTOR");
       tft.Fill_Screen(BLACK);
@@ -330,7 +330,7 @@ void testTransistorParameters() {
       show_string("BROKEN or NO Transistor", CENTER, 200, 4, WHITE, WHITE, 0);
 
       print_button_test();
-    } else if (Uf == 500.00 || Uf == 292.77) {
+    } else if (Uf == 5000.00 || Uf == 2920.77) {
       //Serial.println("BROKEN OR NO TRANSISTOR");
       tft.Fill_Screen(BLACK);
 
@@ -379,7 +379,7 @@ void testTransistorParameters() {
     Serial.println("\Base Analog: " + String(AnalogBase));
     float Uf = (AnalogBase / 204.6) * 100;
     float BaseCurrent = (Uf * 1000) / baseResistor;
-    Serial.println("Uf= " + String(Uf) + "mV");
+    Serial.println("Vf= " + String(Uf) + "mV");
     Serial.println("Base Current:" + String(BaseCurrent) + "mA");
 
 
@@ -399,10 +399,10 @@ void testTransistorParameters() {
     float LeakageCurrentC = LeakageVoltageC / collectorResistor;
     Serial.println("Leakage Current:" + String(LeakageCurrentC) + "mA");
     unsigned int GAIN = (LeakageVoltageC) / collectorResistor / (BaseCurrent / 1000) * 10;
-    Serial.println("GAIN:" + String(GAIN));
+    Serial.println("GAIN:" + String(GAIN - 150));
 
-    show_string("B= " + String(GAIN), 400, 220, 2, WHITE, WHITE, 0);
-    show_string("Uf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
+    show_string("B= " + String(GAIN - 150), 400, 220, 2, WHITE, WHITE, 0);
+    show_string("Vf= " + String(Uf) + "mV", 400, 250, 2, WHITE, WHITE, 0);
 
     if (GAIN > 165 && GAIN < 175) {
       //Serial.println("BROKEN OR NO TRANSISTOR");
