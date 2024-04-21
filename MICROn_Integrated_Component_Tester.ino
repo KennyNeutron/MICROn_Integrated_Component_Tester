@@ -189,8 +189,8 @@ void setup() {
   //tft.Fill_Screen(GREEN);
   //tft.Fill_Screen(BLUE);
 
-  disp_LoadingScreen();
-  delay(2000);
+  //disp_LoadingScreen();
+ // delay(2000);
   tft.Fill_Screen(BLACK);
 }
 
