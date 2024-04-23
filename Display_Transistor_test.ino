@@ -8,11 +8,8 @@
 #define tPin1_res A8
 #define tPin2_res A9
 #define tPin3_res A10
-<<<<<<< HEAD
 
 TRANSISTORTEST transistor;
-=======
->>>>>>> a240ff1ca98cffada0db797e5d39a00110036ca1
 
 bool disp_transistor_test_init = false;
 
@@ -75,17 +72,6 @@ void disp_Transistor_test() {
 
 
 void disp_Transistor_test_exit() {
-<<<<<<< HEAD
-=======
-  pinMode(tPin1, INPUT);
-  pinMode(tPin2, INPUT);
-  pinMode(tPin3, INPUT);
-  pinMode(tPin1_res, INPUT);
-  pinMode(tPin2_res, INPUT);
-  pinMode(tPin3_res, INPUT);
->>>>>>> a240ff1ca98cffada0db797e5d39a00110036ca1
-
-
   btn_pressed = 0;
   disp_transistor_test_init = false;
   btn_TestTransistor_pressed = false;
@@ -113,12 +99,12 @@ void disp_Transistor_test_INIT() {
 
 void run_TestTransistor() {
   Serial.println("test transistor");
-<<<<<<< HEAD
 
   tft.Set_Draw_color(BLACK);
   tft.Fill_Rectangle(0, 100, 800, 350);
   show_string("TESTING...", CENTER, 200, 4, WHITE, WHITE, 0);
 
+  transistor.test();
   transistor.test();
   bool ThisIsNPN = transistor.isNPN();
   bool ThisIsPNP = transistor.isPNP();
@@ -173,9 +159,49 @@ void run_TestTransistor() {
         show_string("Vf= " + String(transistor.getVF()) + "mV", 400, 250, 2, WHITE, WHITE, 0);
       }
     }
+  } else if (!ThisIsNPN && ThisIsPNP) {
+    Serial.println("PNP transistor detected");
 
+    tft.Set_Draw_color(BLACK);
+    tft.Fill_Rectangle(0, 100, 800, 350);
 
+    show_string("PNP Transistor", CENTER, 100, 6, WHITE, WHITE, 0);
 
+    bool Tpinout = transistor.pinout();
+    Serial.println("Vf:" + String(transistor.getVF()) + "mV");;
+    Serial.println("GAIN:" + String(transistor.getGAIN()));
+    Serial.println("PINOUT:" + String(Tpinout));
+    if (Tpinout == true) {
+      if (transistor.getGAIN() == 0 && transistor.getVF() == 0) {
+        tft.Set_Draw_color(BLACK);
+        tft.Fill_Rectangle(0, 100, 800, 350);
+        show_string("Invalid Ratings", CENTER, 200, 4, WHITE, WHITE, 0);
+      } else {
+        Serial.println("Orientation: C.-B.-E.");
+        show_string("Pinout: 1-2-3 = C.-B.-E.", 400, 190, 2, WHITE, WHITE, 0);
+        File bmp_file;
+        bmp_file = SD.open(file_name[11]);
+        draw_bmp_picture(bmp_file, 240, 180);
+        bmp_file.close();
+        show_string("B= " + String(transistor.getGAIN()), 400, 220, 2, WHITE, WHITE, 0);
+        show_string("Vf= " + String(transistor.getVF()) + "mV", 400, 250, 2, WHITE, WHITE, 0);
+      }
+    } else {
+      if (transistor.getGAIN() == 0 && transistor.getVF() == 0) {
+        tft.Set_Draw_color(BLACK);
+        tft.Fill_Rectangle(0, 100, 800, 350);
+        show_string("Invalid Ratings", CENTER, 200, 4, WHITE, WHITE, 0);
+      } else {
+        Serial.println("Orientation: E.-B.-C.");
+        show_string("Pinout: 1-2-3 = E.-B.-C.", 400, 190, 2, WHITE, WHITE, 0);
+        File bmp_file;
+        bmp_file = SD.open(file_name[12]);
+        draw_bmp_picture(bmp_file, 240, 180);
+        bmp_file.close();
+        show_string("B= " + String(transistor.getGAIN()), 400, 220, 2, WHITE, WHITE, 0);
+        show_string("Vf= " + String(transistor.getVF()) + "mV", 400, 250, 2, WHITE, WHITE, 0);
+      }
+    }
   }
 
 
@@ -185,53 +211,10 @@ void run_TestTransistor() {
   // draw_bmp_picture(bmp_file, 10, 10);
   // bmp_file.close();
 
-=======
-  pinMode(tPin1, OUTPUT);
-  pinMode(tPin2, OUTPUT);
-  pinMode(tPin3, INPUT);
-  pinMode(tPin1_res, INPUT);
-  pinMode(tPin2_res, INPUT);
-  pinMode(tPin3_res, INPUT);
-
-  digitalWrite(tPin1, 0);
-  digitalWrite(tPin2, 1);
-  delay(1000);
-  Serial.println("1an1:" + String(analogRead(tPin3)));
-  Serial.println("1anR1:" + String(analogRead(tPin3_res)));
-
-  digitalWrite(tPin1, 1);
-  digitalWrite(tPin2, 0);
-  delay(1000);
-  Serial.println("1an2:" + String(analogRead(tPin3)));
-  Serial.println("1anR2:" + String(analogRead(tPin3_res)));
-
-  transistor_resetallpins();
-
-
-
-  // tft.Fill_Screen(BLACK);
-  // File bmp_file;
-  // bmp_file = SD.open(file_name[0]);
-  // draw_bmp_picture(bmp_file, 10, 10);
-  // bmp_file.close();
-
->>>>>>> a240ff1ca98cffada0db797e5d39a00110036ca1
   // display_TitleBar("Transistor TESTER", " ");
   // btn_TestTransistor_pressed = false;
   // tft.Set_Draw_color(BLACK);
   // tft.Fill_Rectangle(0, 80, 800, 350);
   // //Test (Transistor) Button
   // print_button_test();
-<<<<<<< HEAD
-=======
-}
-
-void transistor_resetallpins() {
-  pinMode(tPin1, INPUT);
-  pinMode(tPin2, INPUT);
-  pinMode(tPin3, INPUT);
-  pinMode(tPin1_res, INPUT);
-  pinMode(tPin2_res, INPUT);
-  pinMode(tPin3_res, INPUT);
->>>>>>> a240ff1ca98cffada0db797e5d39a00110036ca1
 }
